@@ -13,6 +13,8 @@ module.exports = {
   plugins: ['vue', '@typescript-eslint'],
   rules: {
     'no-unused-vars': 'off',
+    'import/extensions': 'off',
+    'import/no-unresolved': 'off',
     'vue/no-multiple-template-root': 'off',
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }]
   }
