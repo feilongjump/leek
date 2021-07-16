@@ -1,7 +1,4 @@
 <template>
-  <!-- lamp -->
-  <div class="w-24 h-24 fixed top-0 -left-10 bg-pink-500 filter blur-3xl"></div>
-  <div class="w-24 h-24 fixed -right-10 inset-y-2/3 bg-blue-500 filter blur-3xl"></div>
   <!-- container -->
   <div class="h-screen text-white">
     <!-- Header -->
@@ -34,7 +31,7 @@
           </div>
           <div class="flex flex-col mb-4">
             <label class="flex flex-col text-purple-500">Password</label>
-            <div class="flex">
+            <div class="flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5 text-pink-500 mr-2"
@@ -78,14 +75,6 @@
       </div>
     </div>
   </div>
-  <!-- stars -->
-  <div class="stars"></div>
 </template>
 
 <script lang="ts" setup></script>
-
-<style scoped>
-.stars {
-  @apply w-5 h-5 bg-white fixed bottom-0 transform rotate-45 skew-x-30 skew-y-30;
-}
-</style>

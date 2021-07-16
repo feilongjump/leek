@@ -8,6 +8,9 @@ module.exports = {
       },
       skew: {
         30: '30deg'
+      },
+      zIndex: {
+        '-1': '-1'
       }
     }
   },
