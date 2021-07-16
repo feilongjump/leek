@@ -3,6 +3,10 @@ import App from '@/App.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
+    path: '/',
+    redirect: '/auth/login'
+  },
+  {
     path: '/auth',
     component: App,
     children: [
