@@ -1,13 +1,16 @@
 <template>
+  <!-- lamp -->
+  <div class="w-24 h-24 fixed top-0 -left-10 bg-pink-500 filter blur-3xl"></div>
+  <div class="w-24 h-24 fixed -right-10 inset-y-2/3 bg-blue-500 filter blur-3xl"></div>
   <!-- container -->
-  <div class="h-screen text-white">
+  <div class="login-container h-screen text-white">
     <!-- Header -->
     <div class="w-full lg:w-8/12 h-16 px-4 mx-auto mb-10 flex justify-between items-center">
       <span>Leek</span>
       <span>Hello</span>
     </div>
     <!-- Main -->
-    <div class="w-full pt-16 sm:pt-0">
+    <div class="w-full pt-16 sm:pt-0 z-10">
       <div class="max-w-2xl mx-auto">
         <div class="mx-4 px-4 py-6 bg-gray-800 rounded-lg">
           <nav class="text-center mb-4">Welcome to Leek.</nav>
@@ -90,3 +93,9 @@ const login = () => {
   Alert.success('Welcome back!')
 }
 </script>
+
+<style scoped>
+.login-container {
+  background-color: #040d21;
+}
+</style>
