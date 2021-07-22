@@ -1,7 +1,23 @@
 <template>
   <!-- lamp -->
   <div class="w-24 h-24 fixed top-0 -left-10 bg-pink-500 filter blur-3xl"></div>
-  <div class="w-24 h-24 fixed -right-10 inset-y-2/3 bg-blue-500 filter blur-3xl"></div>
+  <div
+    class="
+      w-24
+      h-24
+      fixed
+      -right-10
+      inset-y-2/3
+      bg-blue-500
+      filter
+      blur-3xl
+      transition
+      duration-500
+      ease-in-out
+      opacity-0
+      md:opacity-100
+    "
+  ></div>
   <!-- container -->
   <div class="login-container h-screen text-white">
     <!-- Header -->
@@ -86,11 +102,13 @@
 <script lang="ts" setup>
 import Alert from '@/components/Alerts'
 import { ref } from 'vue'
+import router from '@/router'
 
 const test = ref<any>('info')
 
 const login = () => {
   Alert.success('Welcome back!')
+  router.push({ name: 'Backstage.Overview' })
 }
 </script>
 
