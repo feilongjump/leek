@@ -6,6 +6,9 @@ module.exports = {
       colors: {
         black: '#040d21'
       },
+      minWidth: {
+        80: '20rem'
+      },
       skew: {
         30: '30deg'
       },

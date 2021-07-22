@@ -13,6 +13,7 @@
     },
     "skipLibCheck": true,
     "sourceMap": true,
+    "suppressImplicitAnyIndexErrors": true,
     "resolveJsonModule": true,
     "lib": ["esnext", "dom"],
     "types": ["vite/client", "node"]

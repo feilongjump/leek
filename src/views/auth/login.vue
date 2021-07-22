@@ -26,7 +26,7 @@
                   clip-rule="evenodd"
                 />
               </svg>
-              <input class="w-full bg-transparent outline-none" type="text" />
+              <input class="w-full bg-transparent outline-none" type="text" v-model="test" />
             </div>
           </div>
           <div class="flex flex-col mb-4">
@@ -48,7 +48,10 @@
             </div>
           </div>
           <div>
-            <button class="w-full border border-gray-400 rounded-lg px-4 py-1 text-gray-400">
+            <button
+              class="w-full border border-gray-400 rounded-lg px-4 py-1 text-gray-400"
+              @click="login"
+            >
               Sign in
             </button>
           </div>
@@ -77,4 +80,13 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import Alert from '@/components/Alerts'
+import { ref } from 'vue'
+
+const test = ref<any>('info')
+
+const login = () => {
+  Alert.success('Welcome back!')
+}
+</script>
