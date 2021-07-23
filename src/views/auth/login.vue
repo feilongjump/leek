@@ -33,36 +33,14 @@
           <div class="flex flex-col mb-4">
             <label class="flex flex-col text-purple-500">Enter your email or username</label>
             <div class="flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 text-pink-500 mr-2"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
+              <ArrowNarrowRightIcon class="h-5 w-5 text-pink-500 mr-2" />
               <input class="w-full bg-transparent outline-none" type="text" v-model="test" />
             </div>
           </div>
           <div class="flex flex-col mb-4">
             <label class="flex flex-col text-purple-500">Password</label>
             <div class="flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 text-pink-500 mr-2"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                  clip-rule="evenodd"
-                />
-              </svg>
+              <LockClosedIcon class="h-5 w-5 text-pink-500 mr-2" />
               <input class="w-full bg-transparent outline-none" type="password" />
             </div>
           </div>
@@ -100,6 +78,7 @@
 </template>
 
 <script lang="ts" setup>
+import { ArrowNarrowRightIcon, LockClosedIcon } from '@heroicons/vue/solid'
 import Alert from '@/components/Alerts'
 import { ref } from 'vue'
 import router from '@/router'
