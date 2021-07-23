@@ -34,7 +34,7 @@
             <label class="flex flex-col text-purple-500">Enter your email or username</label>
             <div class="flex items-center">
               <ArrowNarrowRightIcon class="h-5 w-5 text-pink-500 mr-2" />
-              <input class="w-full bg-transparent outline-none" type="text" v-model="test" />
+              <input class="w-full bg-transparent outline-none" type="text" />
             </div>
           </div>
           <div class="flex flex-col mb-4">
@@ -80,10 +80,7 @@
 <script lang="ts" setup>
 import { ArrowNarrowRightIcon, LockClosedIcon } from '@heroicons/vue/solid'
 import Alert from '@/components/Alerts'
-import { ref } from 'vue'
 import router from '@/router'
-
-const test = ref<any>('info')
 
 const login = () => {
   Alert.success('Welcome back!')

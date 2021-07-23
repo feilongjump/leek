@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+  @variants hover {
+    .activate-menu {
+      @apply text-white bg-purple-500 rounded-xl font-semibold;
+    }
+  }
   body {
     font-family: Consolas, Monaco, monospace;
     @apply min-h-screen;
