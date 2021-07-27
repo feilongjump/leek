@@ -13,6 +13,26 @@ const backstage: Array<RouteRecordRaw> = [
         path: 'overview',
         name: 'Backstage.Overview',
         component: () => import('@/views/overview/index.vue')
+      },
+      {
+        path: 'blog',
+        name: 'Backstage.Blog',
+        component: () => import('@/views/blog/index.vue')
+      },
+      {
+        path: 'stock',
+        name: 'Backstage.Stock',
+        component: () => import('@/views/stock/index.vue')
+      },
+      {
+        path: 'cash-book',
+        name: 'Backstage.CashBook',
+        component: () => import('@/views/cash-book/index.vue')
+      },
+      {
+        path: 'system',
+        name: 'Backstage.System',
+        component: () => import('@/views/system/index.vue')
       }
     ]
   }
@@ -39,7 +59,8 @@ const routes: Array<RouteRecordRaw> = [
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes
+  routes,
+  linkActiveClass: 'activate-menu'
 })
 
 export default router

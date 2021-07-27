@@ -7,6 +7,9 @@
     .activate-menu {
       @apply text-white bg-purple-500 rounded-xl font-semibold;
     }
+    .activate-menu > svg {
+      @apply w-6 h-6;
+    }
   }
   body {
     font-family: Consolas, Monaco, monospace;
