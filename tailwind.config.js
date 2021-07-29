@@ -21,5 +21,5 @@ module.exports = {
       margin: ['group-hover']
     }
   },
-  plugins: []
+  plugins: [require('@tailwindcss/typography')]
 }

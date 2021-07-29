@@ -12,11 +12,20 @@ import router from '@/router'
 
 const jump = () => {
   const currentRoute = router.currentRoute.value
+  const { id } = currentRoute.params
 
-  if (currentRoute.name?.toString().split('.').length === 3) {
-    router.push({ name: 'Backstage.Topic' })
-  } else {
-    router.push({ name: 'Backstage.Topic.Add' })
+  const routeName = currentRoute.name?.toString().split('.')?.pop()
+
+  switch (routeName) {
+    case 'Topic':
+      router.push({ name: 'Backstage.Topic.Add' })
+      break
+    case 'Show':
+      router.push({ name: 'Backstage.Topic.Edit', params: { id } })
+      break
+    default:
+      router.push({ name: 'Backstage.Topic' })
+      break
   }
 }
 </script>

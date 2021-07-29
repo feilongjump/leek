@@ -6,7 +6,7 @@
       class="block w-full p-4 mt-8 group"
       v-for="topic in topics"
       :key="topic.id"
-      :to="{ name: 'Backstage.Topic.Edit', params: { id: topic.id } }"
+      :to="{ name: 'Backstage.Topic.Show', params: { id: topic.id } }"
     >
       <span class="text-2xl font-semibold">{{ topic.title }}</span>
       <p class="my-4">{{ topic.markdown }}</p>

@@ -5,6 +5,8 @@ declare module '*.vue' {
   export default component
 }
 
+declare module '*.js'
+
 // heroicons 暂不支持 vue3 typescript，等待后续合并
 // https://github.com/tailwindlabs/heroicons/issues/252
 declare module '@heroicons/vue/*' {

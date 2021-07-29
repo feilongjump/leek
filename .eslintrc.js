@@ -14,6 +14,7 @@ module.exports = {
   rules: {
     'no-plusplus': 'off',
     'no-unused-vars': 'off',
+    'global-require': 'off',
     'no-param-reassign': 'off',
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
