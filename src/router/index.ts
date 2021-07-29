@@ -15,9 +15,30 @@ const backstage: Array<RouteRecordRaw> = [
         component: () => import('@/views/overview/index.vue')
       },
       {
-        path: 'blog',
-        name: 'Backstage.Blog',
-        component: () => import('@/views/blog/index.vue')
+        path: 'topics',
+        component: App,
+        children: [
+          {
+            path: '',
+            name: 'Backstage.Topic',
+            component: () => import('@/views/topics/index.vue')
+          },
+          {
+            path: 'add',
+            name: 'Backstage.Topic.Add',
+            component: () => import('@/views/topics/add.vue')
+          },
+          {
+            path: ':id(\\d+)',
+            name: 'Backstage.Topic.Show',
+            component: () => import('@/views/topics/show.vue')
+          },
+          {
+            path: ':id(\\d+)/edit',
+            name: 'Backstage.Topic.Edit',
+            component: () => import('@/views/topics/edit.vue')
+          }
+        ]
       },
       {
         path: 'stock',
