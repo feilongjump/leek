@@ -140,7 +140,7 @@ const logout = () => {
       fixed -left-24 md:left-0
       bg-transparent pt-8 px-4
       transition-all duration-500 ease-in-out
-      shadow-xl border-r border-gray-500
+      border-r border-gray-500
       flex justify-between flex-col;
 }
 .menu-li {
