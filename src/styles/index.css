@@ -15,4 +15,9 @@
     font-family: Consolas, Monaco, monospace;
     @apply min-h-screen;
   }
+
+  /* Table */
+  .table-border-spacing {
+    border-spacing: 0 0.8rem;
+  }
 }

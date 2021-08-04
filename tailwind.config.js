@@ -3,6 +3,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      colors: {
+        module: '#2f3a5a'
+      },
       minWidth: {
         80: '20rem'
       },
