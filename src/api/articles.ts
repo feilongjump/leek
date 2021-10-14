@@ -1,7 +1,7 @@
 import Request from '@/utils/request'
 
-export default class Topics {
-  BASE_URL = 'topics'
+export default class Articles {
+  BASE_URL = 'articles'
 
   public index(params = {}) {
     return Request.get(this.BASE_URL, params)

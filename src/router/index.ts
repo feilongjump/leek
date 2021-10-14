@@ -19,37 +19,37 @@ const backstage: Array<RouteRecordRaw> = [
         }
       },
       {
-        path: 'topics',
+        path: 'articles',
         component: App,
         children: [
           {
             path: '',
-            name: 'Backstage.Topic',
-            component: () => import('@/views/topics/index.vue'),
+            name: 'Backstage.Article',
+            component: () => import('@/views/articles/index.vue'),
             meta: {
               auth: true
             }
           },
           {
             path: 'add',
-            name: 'Backstage.Topic.Add',
-            component: () => import('@/views/topics/add.vue'),
+            name: 'Backstage.Article.Add',
+            component: () => import('@/views/articles/add.vue'),
             meta: {
               auth: true
             }
           },
           {
             path: ':id(\\d+)',
-            name: 'Backstage.Topic.Show',
-            component: () => import('@/views/topics/show.vue'),
+            name: 'Backstage.Article.Show',
+            component: () => import('@/views/articles/show.vue'),
             meta: {
               auth: true
             }
           },
           {
             path: ':id(\\d+)/edit',
-            name: 'Backstage.Topic.Edit',
-            component: () => import('@/views/topics/edit.vue'),
+            name: 'Backstage.Article.Edit',
+            component: () => import('@/views/articles/edit.vue'),
             meta: {
               auth: true
             }

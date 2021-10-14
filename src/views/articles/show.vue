@@ -10,15 +10,18 @@ import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import markdown from '@/utils/markdown.js'
 import Header from './components/Header.vue'
+import Articles from '@/api/articles'
 
 const { id } = useRoute().params
 
-const content = ref<any>(null)
+const content = ref(null)
 
 onMounted(() => {
-  const contentResult = markdown.marked(`# Hello leek, Welcome to Topic`)
-  contentResult.then((contentResponse: any) => {
-    content.value = contentResponse.content
+  new Articles().show(id).then((response) => {
+    const contentResult = markdown.marked(response.content.markdown)
+    contentResult.then((contentResponse: any) => {
+      content.value = contentResponse.content
+    })
   })
 })
 </script>

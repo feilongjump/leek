@@ -89,9 +89,9 @@ const menus = [
     routeName: 'Backstage.Overview'
   },
   {
-    title: 'Topic',
+    title: 'Article',
     icon: LibraryIcon,
-    routeName: 'Backstage.Topic'
+    routeName: 'Backstage.Article'
   },
   {
     title: 'Stock',

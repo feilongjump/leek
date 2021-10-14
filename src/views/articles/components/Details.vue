@@ -4,7 +4,7 @@
       <input
         class="w-52 bg-transparent border-b border-gray-400 outline-none"
         type="text"
-        :value="details.title"
+        v-model="details.title"
       />
       <span
         class="text-sm px-4 py-1 border border-gray-400 rounded-lg cursor-pointer ml-4"
@@ -19,13 +19,13 @@
 
 <script lang="ts" setup>
 import Vditor from 'vditor'
+import { defineProps, onMounted, ref } from 'vue'
 import router from '@/router'
 import Alert from '@/components/Alerts'
-import { computed, defineProps, onMounted } from 'vue'
 import type { Details } from './types'
+import Articles from '@/api/articles'
 
 const { id } = router.currentRoute.value.params
-const vditorCacheId = `topic-vditor-${id}`
 
 const props = defineProps({
   isEdit: {
@@ -34,39 +34,61 @@ const props = defineProps({
   }
 })
 
-const details = computed((): Details => {
-  if (props.isEdit) {
-    // API, Get topic details
-    return {}
-  }
-
-  return {}
-})
+const details = ref<Details>({})
+const contentEditor = ref<any>(null)
 
 onMounted(() => {
-  // 由于不知道怎么去获取 contentEditor，暂时使用缓存的方式获取内容
-  const contentEditor = new Vditor('vditor', {
+  contentEditor.value = new Vditor('vditor', {
     after() {
-      contentEditor.setValue('# Hello leek')
+      if (props.isEdit) {
+        new Articles().show(id).then((response) => {
+          contentEditor.value.setValue(response.content.markdown)
+
+          details.value = response
+        })
+      }
     },
     height: 680,
     theme: 'classic',
-    cache: {
-      enable: true,
-      id: vditorCacheId
-    },
     toolbarConfig: {
       pin: true
     },
+    cache: {
+      enable: false
+    },
     resize: {
       enable: true
-    }
+    },
+    value: '# Hello leek'
   })
 })
 
+const store = (params: any) => {
+  new Articles().store(params).then(() => {
+    Alert.success('积累值 + 1')
+
+    router.push({ name: 'Backstage.Article' })
+  })
+}
+
+const update = (params: any) => {
+  new Articles().patch(id, params).then(() => {
+    Alert.success('修改值 + 1')
+  })
+}
+
 const submit = () => {
-  Alert.success('Success')
-  router.push({ name: 'Backstage.Topic' })
+  const params = {
+    title: details.value.title,
+    markdown: contentEditor.value.getValue(),
+    html: ''
+  }
+
+  if (props.isEdit) {
+    update(params)
+  } else {
+    store(params)
+  }
 }
 </script>
 

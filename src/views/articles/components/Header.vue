@@ -2,7 +2,7 @@
   <div class="pt-8 mb-8">
     <p class="text-white text-xl">Hi Leek,</p>
     <p class="text-white text-3xl font-semibold">
-      Welcome to topic page<span class="cursor-pointer" @click="jump">📚</span>
+      Welcome to article page<span class="cursor-pointer" @click="jump">📚</span>
     </p>
   </div>
 </template>
@@ -17,14 +17,14 @@ const jump = () => {
   const routeName = currentRoute.name?.toString().split('.')?.pop()
 
   switch (routeName) {
-    case 'Topic':
-      router.push({ name: 'Backstage.Topic.Add' })
+    case 'Article':
+      router.push({ name: 'Backstage.Article.Add' })
       break
     case 'Show':
-      router.push({ name: 'Backstage.Topic.Edit', params: { id } })
+      router.push({ name: 'Backstage.Article.Edit', params: { id } })
       break
     default:
-      router.push({ name: 'Backstage.Topic' })
+      router.push({ name: 'Backstage.Article' })
       break
   }
 }
