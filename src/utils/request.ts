@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import router from '@/router'
+import Alert from '@/components/Alerts'
 
 class Request {
   protected baseURL: any = import.meta.env.VITE_APP_API_URL
@@ -55,17 +56,17 @@ class Request {
         const { response } = error
         switch (response.status) {
           case 401:
-            console.info('先登录一下吧。')
+            Alert.warning('先登录一下吧。')
             router.push({ name: 'Login' })
             break
           case 404:
-            console.info('没找到你想要的东西！')
+            Alert.error('没找到你想要的东西！')
             break
           case 422:
-            console.info('参数错误了，让我来提醒你一下！')
+            Alert.warning('参数错误了，让我来提醒你一下！')
             break
           default:
-            console.info('发生了什么？过段时间再来提交错误吧')
+            Alert.error('发生了什么？过段时间再来提交错误吧。')
             break
         }
         return Promise.reject(error)

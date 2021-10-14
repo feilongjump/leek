@@ -34,14 +34,22 @@
             <label class="flex flex-col text-purple-500">Enter your email or username</label>
             <div class="flex items-center">
               <ArrowNarrowRightIcon class="h-5 w-5 text-pink-500 mr-2" />
-              <input class="w-full bg-transparent outline-none" type="text" />
+              <input
+                class="w-full bg-transparent outline-none"
+                type="text"
+                v-model="params.username"
+              />
             </div>
           </div>
           <div class="flex flex-col mb-4">
             <label class="flex flex-col text-purple-500">Password</label>
             <div class="flex items-center">
               <LockClosedIcon class="h-5 w-5 text-pink-500 mr-2" />
-              <input class="w-full bg-transparent outline-none" type="password" />
+              <input
+                class="w-full bg-transparent outline-none"
+                type="password"
+                v-model="params.password"
+              />
             </div>
           </div>
           <div>
@@ -78,13 +86,33 @@
 </template>
 
 <script lang="ts" setup>
+import { reactive } from 'vue'
 import { ArrowNarrowRightIcon, LockClosedIcon } from '@heroicons/vue/solid'
 import Alert from '@/components/Alerts'
 import router from '@/router'
+import Auth from '@/api/auth'
+
+const params = reactive({
+  username: '',
+  password: ''
+})
 
 const login = () => {
-  Alert.success('Welcome back!')
-  router.push({ name: 'Backstage.Overview' })
+  const AuthRequest = new Auth()
+
+  AuthRequest.login(params)
+    .then((response) => {
+      localStorage.setItem('token_type', 'Bearer')
+      localStorage.setItem('token', response.access_token)
+    })
+    .then(() => {
+      AuthRequest.me().then((response) => {
+        localStorage.setItem('user', JSON.stringify(response))
+
+        Alert.success('Welcome back!')
+        router.push({ name: 'Backstage.Overview' })
+      })
+    })
 }
 </script>
 
