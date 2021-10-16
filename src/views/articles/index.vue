@@ -22,7 +22,7 @@ import { onMounted, ref } from 'vue'
 import Header from './components/Header.vue'
 import Article from '@/api/articles'
 
-const articles = ref([])
+const articles = ref<any>([])
 
 onMounted(() => {
   new Article().index().then((response) => {
