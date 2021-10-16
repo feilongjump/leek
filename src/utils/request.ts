@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios, { AxiosRequestConfig } from 'axios'
 import router from '@/router'
 import Alert from '@/components/Alerts'

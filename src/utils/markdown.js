@@ -28,7 +28,7 @@ const tocObj = {
       result += `<li><a class="toc-link" href="#${anchor}">${text}<a></li>\n`
     }
 
-    this.toc.forEach(item => {
+    this.toc.forEach((item) => {
       let levelIndex = levelStack.indexOf(item.level)
       // 没有找到相应level的ul标签，则将li放入新增的ul中
       if (levelIndex === -1) {
