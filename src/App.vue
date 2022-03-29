@@ -1,21 +1,12 @@
-<script setup lang="ts"></script>
-
 <template>
-  <img alt="Vue logo" src="@/assets/logo.png" />
-  <p>
-    <router-link to="/">Home</router-link>
-    <router-link to="/hello-world">Hello World</router-link>
-  </p>
-  <router-view></router-view>
+  <div class="mt-16 text-center">
+    <img class="mx-auto" alt="Vue logo" src="@/assets/logo.png" />
+    <p>
+      <router-link to="/" class="pr-2 text-blue-500">Home</router-link>
+      <router-link to="/hello-world" class="text-blue-500"
+        >Hello World</router-link
+      >
+    </p>
+    <router-view></router-view>
+  </div>
 </template>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
