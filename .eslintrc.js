@@ -12,5 +12,26 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: ['vue', '@typescript-eslint'],
-  rules: {}
+  rules: {
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        ts: 'never'
+      }
+    ],
+    'vue/multi-word-component-names': 'off'
+  },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@', './src'],
+          ['@components', './src/components'],
+          ['@views', './src/views']
+        ],
+        extensions: ['.js', '.ts', '.vue']
+      }
+    }
+  }
 }
