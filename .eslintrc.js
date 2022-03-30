@@ -3,20 +3,14 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
+    'vue/setup-compiler-macros': true
   },
-  extends: [
-    'plugin:vue/essential',
-    'airbnb-base',
-  ],
+  extends: ['plugin:vue/vue3-recommended', 'airbnb-base', 'plugin:prettier/recommended'],
   parserOptions: {
     ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
-    sourceType: 'module',
+    sourceType: 'module'
   },
-  plugins: [
-    'vue',
-    '@typescript-eslint',
-  ],
-  rules: {
-  },
-};
+  plugins: ['vue', '@typescript-eslint'],
+  rules: {}
+}
