@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import backstageRouter from './backstage'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -9,7 +10,8 @@ const routes: Array<RouteRecordRaw> = [
     path: '/login',
     name: 'Login',
     component: () => import('@views/auth/login.vue')
-  }
+  },
+  ...backstageRouter
 ]
 
 const router = createRouter({

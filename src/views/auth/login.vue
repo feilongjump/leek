@@ -1,6 +1,11 @@
 <script setup lang="ts">
-import authImage from '@/assets/auth.png'
+import router from '@/router'
 import logo from '@/assets/logo.png'
+import authImage from '@/assets/auth.png'
+
+const login = () => {
+  router.push({ name: 'Backstage' })
+}
 </script>
 
 <template>
@@ -45,6 +50,7 @@ import logo from '@/assets/logo.png'
           <!-- actions -->
           <button
             class="mt-12 bg-indigo-500 px-12 py-2 rounded-full shadow-lg shadow-indigo-300 text-white tracking-wider"
+            @click="login"
           >
             LOGIN
           </button>
