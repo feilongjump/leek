@@ -11,6 +11,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/hello-world', // 路径
     name: 'Hello-World', // 路由名
     component: () => import('@views/hello-world.vue') // 懒加载模式 - 加载页面
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@views/auth/login.vue')
   }
 ]
 
