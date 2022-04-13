@@ -48,8 +48,7 @@ import sidebarImg from '@/assets/sidebar.png'
   @apply h-screen w-0 md:w-24 lg:w-64
       fixed -left-24 md:left-0
       transition-all duration-500 ease-in-out
-      flex flex-col justify-between
-      border-r-2 border-gray-300;
+      flex flex-col justify-between;
 }
 #sidebar-menu {
   height: calc(100% - 80px - 2rem);
