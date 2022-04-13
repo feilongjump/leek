@@ -1,7 +1,14 @@
+const scrollbar = require('@gradin/tailwindcss-scrollbar')
+
 module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts}'],
   theme: {
-    extend: {}
+    extend: {},
+    scrollbar: () => ({
+      DEFAULT: {
+        size: '0px'
+      }
+    })
   },
-  plugins: []
+  plugins: [scrollbar]
 }

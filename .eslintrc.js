@@ -20,6 +20,10 @@ module.exports = {
         ts: 'never'
       }
     ],
+    'import/no-extraneous-dependencies': [
+      'error',
+      { devDependencies: ['tailwind.config.js', 'vite.config.ts'] }
+    ],
     'vue/multi-word-component-names': 'off'
   },
   settings: {
