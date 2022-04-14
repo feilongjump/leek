@@ -3,7 +3,7 @@ import avatar from '@/assets/avatar.jpg'
 import {
   BeakerIcon,
   ArchiveIcon,
-  ChartPieIcon,
+  CakeIcon,
   ColorSwatchIcon,
   FireIcon,
   BellIcon,
@@ -22,7 +22,7 @@ const menus = [
     strokeColor: 'stroke-gray-400'
   },
   {
-    icon: ChartPieIcon,
+    icon: CakeIcon,
     bgColor: 'bg-gray-100',
     strokeColor: 'stroke-gray-400'
   },
@@ -71,18 +71,21 @@ const menus = [
 
 <style scoped>
 #navbar-container {
-  @apply h-12 w-screen md:h-20 px-2 md:px-4 ml-0 md:ml-24 lg:ml-64 fixed
+  @apply h-12 w-screen md:h-20
+    px-2 md:px-4 ml-0 md:ml-32 lg:ml-72
+    fixed md:top-4
+    bg-white rounded-xl shadow-xl
     transition-all duration-500 ease-in-out
     flex justify-between items-center;
 }
 @screen md {
   #navbar-container {
-    width: calc(theme('width.screen') - theme('width.24'));
+    width: calc(theme('width.screen') - theme('width.32') - theme('width.4'));
   }
 }
 @screen lg {
   #navbar-container {
-    width: calc(theme('width.screen') - theme('width.64'));
+    width: calc(theme('width.screen') - theme('width.72') - theme('width.4'));
   }
 }
 </style>
