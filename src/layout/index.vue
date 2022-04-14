@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import Sidebar from './components/Sidebar.vue'
 import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
 </script>
 
 <template>
-  <div class="min-h-screen w-screen flex bg-gray-50">
+  <div class="min-h-screen w-screen flex bg-gray-100">
     <Sidebar />
 
     <Navbar />
@@ -15,5 +16,7 @@ import Navbar from './components/Navbar.vue'
     >
       <router-view></router-view>
     </div>
+
+    <Footer />
   </div>
 </template>
