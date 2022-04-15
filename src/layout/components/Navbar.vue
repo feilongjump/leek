@@ -74,7 +74,7 @@ const menus = [
   @apply h-12 w-screen md:h-20
     px-2 md:px-4 ml-0 md:ml-32 lg:ml-72
     fixed md:top-4
-    bg-white rounded-xl shadow-xl
+    bg-white rounded-b-xl md:rounded-xl shadow-xl
     transition-all duration-500 ease-in-out
     flex justify-between items-center;
 }
