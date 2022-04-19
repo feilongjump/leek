@@ -2,20 +2,6 @@
 import LineChartVue from '@/components/charts/LineChart.vue'
 
 const options = {
-  xAxis: {
-    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-    boundaryGap: false,
-    axisTick: {
-      show: false
-    }
-  },
-  grid: {
-    left: 10,
-    right: 10,
-    bottom: 20,
-    top: 30,
-    containLabel: true
-  },
   tooltip: {
     trigger: 'axis',
     axisPointer: {
@@ -23,29 +9,37 @@ const options = {
     },
     padding: [5, 10]
   },
-  yAxis: {
-    axisTick: {
-      show: false
-    }
+  grid: {
+    top: '2%',
+    left: '2%',
+    right: '2%',
+    bottom: '8%',
+    containLabel: true
   },
   legend: {
+    bottom: '0%',
     data: ['expected', 'actual']
   },
+  xAxis: {
+    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    boundaryGap: false
+  },
+  yAxis: {},
   series: [
     {
       name: 'expected',
+      smooth: true,
+      type: 'line',
       itemStyle: {
         normal: {
           color: '#FF005A',
           lineStyle: {
             color: '#FF005A',
-            width: 2
+            width: 3
           }
         }
       },
-      smooth: true,
-      type: 'line',
-      data: [100, 120, 161, 134, 105, 160, 165],
+      data: [556, 725, 424, 356, 586, 756, 616],
       animationDuration: 2800,
       animationEasing: 'cubicInOut'
     },
@@ -58,14 +52,14 @@ const options = {
           color: '#3888fa',
           lineStyle: {
             color: '#3888fa',
-            width: 2
+            width: 3
           },
           areaStyle: {
             color: '#f3f8ff'
           }
         }
       },
-      data: [120, 82, 91, 154, 162, 140, 145],
+      data: [356, 218, 156, 526, 356, 256, 56],
       animationDuration: 2800,
       animationEasing: 'quadraticOut'
     }
@@ -76,7 +70,12 @@ const options = {
 <template>
   <span class="text-2xl font-bold">Dashboard</span>
 
-  <div class="w-full mt-6 flex">
-    <LineChartVue class="w-full h-96 rounded-xl shadow-xl bg-white" :options="options" />
+  <div class="w-2/3 mt-6 p-6 flex flex-col rounded-xl shadow-xl bg-white">
+    <span class="w-full mb-4 text-2xl">Title</span>
+    <LineChartVue class="w-full h-96" :options="options" />
+    <div class="w-full mt-4 pt-6 border-t border-gray-200 flex justify-between">
+      <span class="text-gray-400 cursor-pointer">Options</span>
+      <span class="text-indigo-400 cursor-pointer">Link</span>
+    </div>
   </div>
 </template>
