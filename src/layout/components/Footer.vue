@@ -5,7 +5,7 @@ import { BellIcon, ChatIcon, TemplateIcon } from '@heroicons/vue/outline'
 </script>
 
 <template>
-  <footer class="w-screen h-12 fixed bottom-0 px-6 flex sm:hidden rounded-t-xl">
+  <footer class="w-screen h-12 fixed bottom-0 px-6 flex md:hidden rounded-t-xl">
     <div
       class="w-12 h-12 rounded-full fixed bottom-6 inset-x-1/2 bg-white -ml-6 flex items-center justify-center shadow-xl"
     >

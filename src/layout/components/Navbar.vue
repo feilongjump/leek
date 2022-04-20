@@ -41,7 +41,7 @@ const menus = [
 
 <template>
   <div id="navbar-container">
-    <div class="w-full md:w-1/3 lg:max-w-sm">
+    <div class="w-full md:w-1/3 xl:max-w-sm">
       <ul class="flex">
         <li
           v-for="(item, index) in menus"
@@ -72,7 +72,7 @@ const menus = [
 <style scoped>
 #navbar-container {
   @apply h-12 w-screen md:h-20
-    px-2 md:px-4 ml-0 md:ml-32 lg:ml-72
+    px-2 md:px-4 ml-0 md:ml-32 xl:ml-72
     fixed md:top-4
     bg-white rounded-b-xl md:rounded-xl shadow-xl
     transition-all duration-500 ease-in-out
@@ -83,7 +83,7 @@ const menus = [
     width: calc(theme('width.screen') - theme('width.32') - theme('width.4'));
   }
 }
-@screen lg {
+@screen xl {
   #navbar-container {
     width: calc(theme('width.screen') - theme('width.72') - theme('width.4'));
   }
