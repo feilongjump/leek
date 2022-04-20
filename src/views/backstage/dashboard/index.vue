@@ -70,7 +70,7 @@ const options = {
 <template>
   <span class="text-2xl font-bold">Dashboard</span>
 
-  <div class="w-2/3 mt-6 p-6 flex flex-col rounded-xl shadow-xl bg-white">
+  <div class="w-full xl:w-2/3 mt-6 p-6 flex flex-col rounded-xl shadow-xl bg-white">
     <span class="w-full mb-4 text-2xl">Title</span>
     <LineChartVue class="w-full h-96" :options="options" />
     <div class="w-full mt-4 pt-6 border-t border-gray-200 flex justify-between">
