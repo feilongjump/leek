@@ -5,9 +5,11 @@ import Calendar from './components/Calendar.vue'
 </script>
 
 <template>
-  <span class="text-2xl font-bold">Dashboard</span>
+  <div class="mb-6">
+    <span class="text-2xl font-bold">Dashboard</span>
+  </div>
 
-  <div class="w-full mt-6 flex flex-wrap">
+  <div class="w-full flex flex-wrap">
     <div class="line-chart-dom">
       <LineChart />
       <Ranking />
