@@ -1,40 +1,13 @@
 <script setup lang="ts">
 import logo from '@/assets/logo.png'
 import sidebarImg from '@/assets/sidebar.png'
-import {
-  ChartPieIcon,
-  ClipboardCheckIcon,
-  CogIcon,
-  LogoutIcon,
-  PencilIcon,
-  ShoppingCartIcon,
-  TemplateIcon
-} from '@heroicons/vue/outline'
+import { ChartPieIcon, LogoutIcon } from '@heroicons/vue/outline'
 
 const menus = [
   {
     name: 'Dashboard',
-    icon: ChartPieIcon
-  },
-  {
-    name: 'Blog',
-    icon: PencilIcon
-  },
-  {
-    name: 'Product',
-    icon: ShoppingCartIcon
-  },
-  {
-    name: 'Order',
-    icon: ClipboardCheckIcon
-  },
-  {
-    name: 'Setting',
-    icon: CogIcon
-  },
-  {
-    name: 'Todo',
-    icon: TemplateIcon
+    icon: ChartPieIcon,
+    pathName: 'Backstage.Dashboard'
   }
 ]
 </script>
@@ -54,10 +27,15 @@ const menus = [
           <li
             v-for="(item, index) in menus"
             :key="index"
-            class="w-full py-4 text-gray-400 cursor-pointer hover:text-indigo-400 hover:font-bold flex justify-center xl:justify-start first:text-indigo-400 first:font-bold"
+            class="w-full py-4 text-gray-400 cursor-pointer hover:activate-menu"
           >
-            <component :is="item.icon" class="h-6 w-6 mr-0 xl:mr-4"></component>
-            <span class="hidden xl:inline">{{ item.name }}</span>
+            <router-link
+              class="w-full h-full flex justify-center xl:justify-start"
+              :to="{ name: item.pathName }"
+            >
+              <component :is="item.icon" class="h-6 w-6 mr-0 xl:mr-4"></component>
+              <span class="hidden xl:inline">{{ item.name }}</span>
+            </router-link>
           </li>
         </ul>
       </div>

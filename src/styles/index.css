@@ -5,3 +5,8 @@
 #app {
   @apply font-sans antialiased;
 }
+@layer utilities {
+  .activate-menu {
+    @apply text-indigo-400 font-bold;
+  }
+}

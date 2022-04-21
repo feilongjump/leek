@@ -16,6 +16,7 @@ const routes: Array<RouteRecordRaw> = [
 
 const router = createRouter({
   history: createWebHistory(),
+  linkActiveClass: 'activate-menu',
   routes
 })
 
