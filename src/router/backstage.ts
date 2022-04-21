@@ -1,5 +1,6 @@
 import { RouteRecordRaw } from 'vue-router'
 import Layout from '@/layout/index.vue'
+import articles from './backstage_modules/articles'
 
 const backstageRouter: Array<RouteRecordRaw> = [
   {
@@ -9,10 +10,11 @@ const backstageRouter: Array<RouteRecordRaw> = [
     component: Layout,
     children: [
       {
-        path: '',
+        path: 'dashboard',
         name: 'Backstage.Dashboard',
         component: () => import('@views/backstage/dashboard/index.vue')
-      }
+      },
+      ...articles
     ]
   }
 ]
