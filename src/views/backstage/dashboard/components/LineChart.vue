@@ -9,16 +9,17 @@ const options = {
     },
     padding: [5, 10]
   },
-  grid: {
-    top: '2%',
-    left: '2%',
+  legend: {
+    top: '0%',
     right: '2%',
-    bottom: '8%',
+    data: ['expected', 'actual'],
     containLabel: true
   },
-  legend: {
+  grid: {
+    left: '2%',
+    right: '2%',
     bottom: '0%',
-    data: ['expected', 'actual']
+    containLabel: true
   },
   xAxis: {
     data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -68,10 +69,14 @@ const options = {
 </script>
 
 <template>
-  <span class="w-full mb-4 text-2xl">Title</span>
-  <LineChart class="w-full h-96" :options="options" />
-  <div class="w-full mt-4 pt-6 border-t border-gray-200 flex justify-between">
-    <span class="text-gray-400 cursor-pointer">Options</span>
-    <span class="text-indigo-400 cursor-pointer">Link</span>
+  <div class="w-full flex justify-between items-center p-6 pb-4 border-b mb-6">
+    <span class="tracking-wide font-semibold">Trend</span>
+    <div class="w-44 h-10 bg-gray-50 rounded-md flex justify-center items-center">
+      <button class="h-8 bg-white text-xs px-2 py-1 rounded-md mr-2 shadow-xl">This Week</button>
+      <button class="h-8 text-xs px-2 py-1 rounded-md text-gray-500 hover:text-indigo-300">
+        This Month
+      </button>
+    </div>
   </div>
+  <LineChart class="w-full h-96 px-6" :options="options" />
 </template>
