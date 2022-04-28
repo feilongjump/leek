@@ -6,6 +6,14 @@ import {
   SearchIcon,
   FilterIcon
 } from '@heroicons/vue/outline'
+import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
+import { ref } from 'vue'
+
+const status = ref([])
+const apply = async (close: () => void) => {
+  await console.info(status)
+  close()
+}
 </script>
 
 <template>
@@ -38,73 +46,68 @@ import {
         >
           <DownloadIcon class="w-4 h-4 mr-1" />Export
         </button>
-        <button
-          class="flex justify-center items-center text-xs text-gray-500 border border-gray-200 rounded-lg px-3 py-2 mr-4 hover:shadow-xl hover:text-indigo-400 transition-all duration-500 ease-in-out"
-        >
-          <FilterIcon class="w-4 h-4 mr-1" />Filter
-        </button>
+        <Popover v-slot="{ open }" class="relative">
+          <PopoverButton
+            class="flex justify-center items-center text-xs text-gray-500 border border-gray-200 rounded-lg px-3 py-2 hover:shadow-xl hover:text-indigo-400 transition-all duration-500 ease-in-out"
+          >
+            <FilterIcon class="w-4 h-4 mr-1" />Filter
+          </PopoverButton>
+
+          <div v-if="open">
+            <PopoverPanel
+              v-slot="{ close }"
+              class="w-64 absolute z-10 top-12 right-0 bg-white rounded-xl py-4 shadow-xl border border-gray-200"
+            >
+              <div class="border-b px-4 pb-4">
+                <span class="font-bold">Filter</span>
+              </div>
+              <div class="px-4 pt-4">
+                <div class="mb-4">
+                  <div class="text-sm font-semibold mb-2 text-gray-400"><span>Status</span></div>
+                  <div class="w-full flex justify-between">
+                    <div class="flex items-center relative">
+                      <input
+                        id="published-status"
+                        v-model="status"
+                        value="published"
+                        type="checkbox"
+                        class="cursor-pointer peer"
+                      />
+                      <label
+                        for="published-status"
+                        class="text-sm cursor-pointer ml-4 text-gray-500 before:w-5 before:h-5 before:bg-white before:rounded-md before:absolute before:border before:border-gray-300 before:left-0 before:top-0 peer-checked:before:bg-indigo-400 peer-checked:before:border-indigo-400 after:block after:w-5 after:h-5 after:absolute after:left-0 after:top-0 after:bg-check after:bg-cover after:bg-no-repeat"
+                      >
+                        Published
+                      </label>
+                    </div>
+                    <div class="flex items-center relative">
+                      <input
+                        id="draft-status"
+                        v-model="status"
+                        value="draft"
+                        type="checkbox"
+                        class="cursor-pointer peer"
+                      />
+                      <label
+                        for="draft-status"
+                        class="text-sm cursor-pointer ml-4 text-gray-500 before:w-5 before:h-5 before:bg-white before:rounded-md before:absolute before:border before:border-gray-300 before:left-0 before:top-0 peer-checked:before:bg-indigo-400 peer-checked:before:border-indigo-400 after:block after:w-5 after:h-5 after:absolute after:left-0 after:top-0 after:bg-check after:bg-cover after:bg-no-repeat"
+                      >
+                        Draft
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  class="w-full bg-indigo-400 text-white rounded-lg py-2"
+                  @click="apply(close)"
+                >
+                  Apply
+                </button>
+              </div>
+            </PopoverPanel>
+          </div>
+        </Popover>
       </div>
-    </div>
-    <div class="w-full border-t">
-      <table class="w-full px-4 text-sm text-left text-gray-500">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700">
-          <tr>
-            <th scope="col" class="px-6 py-3">Product name</th>
-            <th scope="col" class="px-6 py-3">Color</th>
-            <th scope="col" class="px-6 py-3">Category</th>
-            <th scope="col" class="px-6 py-3">Price</th>
-            <th scope="col" class="px-6 py-3">
-              <span class="sr-only">Edit</span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="bg-white border-b">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-              Apple MacBook Pro 17"
-            </th>
-            <td class="px-6 py-4">Sliver</td>
-            <td class="px-6 py-4">Laptop</td>
-            <td class="px-6 py-4">$2999</td>
-            <td class="px-6 py-4 text-right">
-              <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-            </td>
-          </tr>
-          <tr class="bg-white border-b">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-              Microsoft Surface Pro
-            </th>
-            <td class="px-6 py-4">White</td>
-            <td class="px-6 py-4">Laptop PC</td>
-            <td class="px-6 py-4">$1999</td>
-            <td class="px-6 py-4 text-right">
-              <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-            </td>
-          </tr>
-          <tr class="bg-white border-b">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-              Magic Mouse 2
-            </th>
-            <td class="px-6 py-4">Black</td>
-            <td class="px-6 py-4">Accessories</td>
-            <td class="px-6 py-4">$99</td>
-            <td class="px-6 py-4 text-right">
-              <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-            </td>
-          </tr>
-          <tr class="bg-white">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-              Magic Mouse 2
-            </th>
-            <td class="px-6 py-4">Black</td>
-            <td class="px-6 py-4">Accessories</td>
-            <td class="px-6 py-4">$99</td>
-            <td class="px-6 py-4 text-right">
-              <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
     <div class="px-4 border-t">pages</div>
   </div>
