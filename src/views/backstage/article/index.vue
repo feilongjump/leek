@@ -1,11 +1,12 @@
 <template>
   <div class="w-full mb-6 flex justify-between items-center">
     <span class="text-2xl font-bold">Article</span>
-    <button
+    <router-link
+      :to="{ name: 'Backstage.Article.Add' }"
       class="flex justify-center items-center bg-indigo-400 text-sm text-white rounded-lg px-4 py-2 hover:bg-indigo-500"
     >
       <DocumentAddIcon class="w-5 h-5 mr-1" />Add
-    </button>
+    </router-link>
   </div>
 
   <div class="w-full bg-white rounded-xl shadow-xl py-2">
@@ -114,9 +115,12 @@
               <td class="px-4 py-4">Laptop</td>
               <td class="px-4 py-4">$2999</td>
               <td class="px-4 py-4 flex justify-end">
-                <button href="#" class="flex hollow-indigo-btn">
+                <router-link
+                  :to="{ name: 'Backstage.Article.Edit', params: { id: 1 } }"
+                  class="flex hollow-indigo-btn"
+                >
                   <PencilIcon class="w-4 h-4 mr-1" />Edit
-                </button>
+                </router-link>
               </td>
             </tr>
             <tr class="bg-white">
@@ -127,9 +131,12 @@
               <td class="px-4 py-4">Laptop PC</td>
               <td class="px-4 py-4">$1999</td>
               <td class="px-4 py-4 flex justify-end">
-                <button href="#" class="flex hollow-indigo-btn">
+                <router-link
+                  :to="{ name: 'Backstage.Article.Edit', params: { id: 1 } }"
+                  class="flex hollow-indigo-btn"
+                >
                   <PencilIcon class="w-4 h-4 mr-1" />Edit
-                </button>
+                </router-link>
               </td>
             </tr>
             <tr class="bg-white">
@@ -140,9 +147,12 @@
               <td class="px-4 py-4">Accessories</td>
               <td class="px-4 py-4">$99</td>
               <td class="px-4 py-4 flex justify-end">
-                <button href="#" class="flex hollow-indigo-btn">
+                <router-link
+                  :to="{ name: 'Backstage.Article.Edit', params: { id: 1 } }"
+                  class="flex hollow-indigo-btn"
+                >
                   <PencilIcon class="w-4 h-4 mr-1" />Edit
-                </button>
+                </router-link>
               </td>
             </tr>
             <tr class="bg-white">
@@ -153,9 +163,12 @@
               <td class="px-4 py-4">Accessories</td>
               <td class="px-4 py-4">$99</td>
               <td class="px-4 py-4 flex justify-end">
-                <button href="#" class="flex hollow-indigo-btn">
+                <router-link
+                  :to="{ name: 'Backstage.Article.Edit', params: { id: 1 } }"
+                  class="flex hollow-indigo-btn"
+                >
                   <PencilIcon class="w-4 h-4 mr-1" />Edit
-                </button>
+                </router-link>
               </td>
             </tr>
           </tbody>
