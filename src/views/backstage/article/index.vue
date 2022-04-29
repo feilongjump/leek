@@ -19,18 +19,18 @@
       </div>
       <div class="flex flex-wrap items-center mt-4 sm:mt-0">
         <button
-          class="flex justify-center items-center text-xs text-red-500 border border-gray-200 rounded-lg px-3 py-2 mr-4 hover:shadow-xl transition-all duration-500 ease-in-out"
+          class="flex justify-center items-center hollow-error-btn mr-4 transition-all duration-500 ease-in-out"
         >
           <TrashIcon class="w-4 h-4 mr-1" />Delete
         </button>
         <button
-          class="flex justify-center items-center text-xs text-gray-500 border border-gray-200 rounded-lg px-3 py-2 mr-4 hover:shadow-xl hover:text-indigo-400 transition-all duration-500 ease-in-out"
+          class="flex justify-center items-center hollow-indigo-btn mr-4 transition-all duration-500 ease-in-out"
         >
           <DownloadIcon class="w-4 h-4 mr-1" />Export
         </button>
         <Popover v-slot="{ open }" class="relative">
           <PopoverButton
-            class="flex justify-center items-center text-xs text-gray-500 border border-gray-200 rounded-lg px-3 py-2 hover:shadow-xl hover:text-indigo-400 transition-all duration-500 ease-in-out"
+            class="flex justify-center items-center hollow-indigo-btn transition-all duration-500 ease-in-out"
           >
             <FilterIcon class="w-4 h-4 mr-1" />Filter
           </PopoverButton>
@@ -91,7 +91,114 @@
         </Popover>
       </div>
     </div>
-    <div class="px-4 border-t">pages</div>
+    <div class="border-t-2">
+      <div class="w-full">
+        <table class="w-full text-sm text-left text-gray-500">
+          <thead class="text-xs text-gray-700 uppercase bg-slate-50">
+            <tr>
+              <th scope="col" class="px-4 py-4">Title</th>
+              <th scope="col" class="px-4 py-4">Color</th>
+              <th scope="col" class="px-4 py-4">Category</th>
+              <th scope="col" class="px-4 py-4">Price</th>
+              <th scope="col" class="px-4 py-4">
+                <span class="sr-only">Edit</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white">
+              <th scope="row" class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap">
+                Apple MacBook Pro 17"
+              </th>
+              <td class="px-4 py-4">Sliver</td>
+              <td class="px-4 py-4">Laptop</td>
+              <td class="px-4 py-4">$2999</td>
+              <td class="px-4 py-4 flex justify-end">
+                <button href="#" class="flex hollow-indigo-btn">
+                  <PencilIcon class="w-4 h-4 mr-1" />Edit
+                </button>
+              </td>
+            </tr>
+            <tr class="bg-white">
+              <th scope="row" class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap">
+                Microsoft Surface Pro
+              </th>
+              <td class="px-4 py-4">White</td>
+              <td class="px-4 py-4">Laptop PC</td>
+              <td class="px-4 py-4">$1999</td>
+              <td class="px-4 py-4 flex justify-end">
+                <button href="#" class="flex hollow-indigo-btn">
+                  <PencilIcon class="w-4 h-4 mr-1" />Edit
+                </button>
+              </td>
+            </tr>
+            <tr class="bg-white">
+              <th scope="row" class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap">
+                Magic Mouse 2
+              </th>
+              <td class="px-4 py-4">Black</td>
+              <td class="px-4 py-4">Accessories</td>
+              <td class="px-4 py-4">$99</td>
+              <td class="px-4 py-4 flex justify-end">
+                <button href="#" class="flex hollow-indigo-btn">
+                  <PencilIcon class="w-4 h-4 mr-1" />Edit
+                </button>
+              </td>
+            </tr>
+            <tr class="bg-white">
+              <th scope="row" class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap">
+                Magic Mouse 2
+              </th>
+              <td class="px-4 py-4">Black</td>
+              <td class="px-4 py-4">Accessories</td>
+              <td class="px-4 py-4">$99</td>
+              <td class="px-4 py-4 flex justify-end">
+                <button href="#" class="flex hollow-indigo-btn">
+                  <PencilIcon class="w-4 h-4 mr-1" />Edit
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="w-full border-t px-4 py-4 flex justify-between items-center">
+          <div class="text-gray-400 text-sm">
+            <span>Showing:</span>
+            <select class="text-black mx-3 outline-none">
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+            </select>
+            <span> of 5</span>
+          </div>
+          <div class="flex">
+            <ul class="flex items-center">
+              <li class="w-12 h-9 mr-2 flex justify-center items-center cursor-default">Prev</li>
+              <li
+                class="w-9 h-9 flex justify-center items-center mr-2 cursor-default rounded-lg bg-indigo-400 text-white"
+              >
+                1
+              </li>
+              <li
+                class="w-9 h-9 flex justify-center items-center mr-2 cursor-pointer rounded-lg hover:bg-indigo-100 hover:text-indigo-400"
+              >
+                2
+              </li>
+              <li
+                class="w-9 h-9 flex justify-center items-center mr-2 rounded-lg cursor-pointer hover:bg-indigo-100 hover:text-indigo-400"
+              >
+                3
+              </li>
+              <li
+                class="w-12 h-9 flex justify-center items-center cursor-pointer p-2 rounded-lg hover:bg-indigo-100 hover:text-indigo-400"
+              >
+                Next
+              </li>
+            </ul>
+            <button></button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -103,6 +210,7 @@ import {
   SearchIcon,
   FilterIcon
 } from '@heroicons/vue/outline'
+import { PencilIcon } from '@heroicons/vue/solid'
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import { ref } from 'vue'
 
