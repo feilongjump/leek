@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import router from '@/router'
-import logo from '@/assets/logo.png'
-import authImage from '@/assets/auth.png'
-
-const login = () => {
-  router.push({ name: 'Backstage' })
-}
-</script>
-
 <template>
   <div class="h-screen sm:flex sm:justify-center sm:items-center bg-gray-50">
     <div
@@ -65,3 +55,13 @@ const login = () => {
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import router from '@/router'
+import logo from '@/assets/logo.png'
+import authImage from '@/assets/auth.png'
+
+const login = () => {
+  router.push({ name: 'Backstage' })
+}
+</script>

@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import logo from '@/assets/logo.png'
-import avatar from '@/assets/avatar.jpg'
-import { BellIcon, ChatIcon, TemplateIcon } from '@heroicons/vue/outline'
-</script>
-
 <template>
   <footer class="w-screen h-12 fixed bottom-0 px-6 flex md:hidden rounded-t-xl">
     <div
@@ -31,6 +25,12 @@ import { BellIcon, ChatIcon, TemplateIcon } from '@heroicons/vue/outline'
     </div>
   </footer>
 </template>
+
+<script setup lang="ts">
+import logo from '@/assets/logo.png'
+import avatar from '@/assets/avatar.jpg'
+import { BellIcon, ChatIcon, TemplateIcon } from '@heroicons/vue/outline'
+</script>
 
 <style scoped>
 footer {

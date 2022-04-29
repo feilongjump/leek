@@ -1,14 +1,3 @@
-<script lang="ts" setup>
-import { ref } from 'vue'
-import zhCn from 'element-plus/lib/locale/lang/zh-cn'
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/outline'
-
-const calendar = ref()
-const selectDate = (val: string) => {
-  calendar.value.selectDate(val)
-}
-</script>
-
 <template>
   <el-config-provider :locale="zhCn">
     <el-calendar id="calendar-container" ref="calendar" class="h-full w-full">
@@ -32,6 +21,17 @@ const selectDate = (val: string) => {
     </el-calendar>
   </el-config-provider>
 </template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/outline'
+
+const calendar = ref()
+const selectDate = (val: string) => {
+  calendar.value.selectDate(val)
+}
+</script>
 
 <style>
 #calendar-container .el-calendar__header {

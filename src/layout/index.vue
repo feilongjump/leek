@@ -1,9 +1,3 @@
-<script lang="ts" setup>
-import Sidebar from './components/Sidebar.vue'
-import Navbar from './components/Navbar.vue'
-import Footer from './components/Footer.vue'
-</script>
-
 <template>
   <div class="min-h-screen w-screen flex bg-gray-100">
     <Sidebar />
@@ -20,3 +14,9 @@ import Footer from './components/Footer.vue'
     <Footer />
   </div>
 </template>
+
+<script lang="ts" setup>
+import Sidebar from './components/Sidebar.vue'
+import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
+</script>

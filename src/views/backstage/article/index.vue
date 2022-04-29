@@ -1,21 +1,3 @@
-<script setup lang="ts">
-import {
-  DownloadIcon,
-  TrashIcon,
-  DocumentAddIcon,
-  SearchIcon,
-  FilterIcon
-} from '@heroicons/vue/outline'
-import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-import { ref } from 'vue'
-
-const status = ref([])
-const apply = async (close: () => void) => {
-  await console.info(status)
-  close()
-}
-</script>
-
 <template>
   <div class="w-full mb-6 flex justify-between items-center">
     <span class="text-2xl font-bold">Article</span>
@@ -112,3 +94,21 @@ const apply = async (close: () => void) => {
     <div class="px-4 border-t">pages</div>
   </div>
 </template>
+
+<script setup lang="ts">
+import {
+  DownloadIcon,
+  TrashIcon,
+  DocumentAddIcon,
+  SearchIcon,
+  FilterIcon
+} from '@heroicons/vue/outline'
+import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
+import { ref } from 'vue'
+
+const status = ref([])
+const apply = async (close: () => void) => {
+  await console.info(status)
+  close()
+}
+</script>

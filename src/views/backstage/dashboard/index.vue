@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import LineChart from './components/LineChart.vue'
-import Ranking from './components/Ranking.vue'
-import Calendar from './components/Calendar.vue'
-</script>
-
 <template>
   <div class="mb-6">
     <span class="text-2xl font-bold">Dashboard</span>
@@ -29,6 +23,12 @@ import Calendar from './components/Calendar.vue'
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import LineChart from './components/LineChart.vue'
+import Ranking from './components/Ranking.vue'
+import Calendar from './components/Calendar.vue'
+</script>
 
 <style>
 .line-chart-dom {

@@ -1,3 +1,16 @@
+<template>
+  <div class="w-full flex justify-between items-center p-6 pb-4 border-b mb-6">
+    <span class="tracking-wide font-semibold">Trend</span>
+    <div class="w-44 h-10 bg-gray-50 rounded-md flex justify-center items-center">
+      <button class="h-8 bg-white text-xs px-2 py-1 rounded-md mr-2 shadow-xl">This Week</button>
+      <button class="h-8 text-xs px-2 py-1 rounded-md text-gray-500 hover:text-indigo-300">
+        This Month
+      </button>
+    </div>
+  </div>
+  <LineChart class="w-full h-96 px-6" :options="options" />
+</template>
+
 <script setup lang="ts">
 import LineChart from '@/components/charts/LineChart.vue'
 
@@ -67,16 +80,3 @@ const options = {
   ]
 }
 </script>
-
-<template>
-  <div class="w-full flex justify-between items-center p-6 pb-4 border-b mb-6">
-    <span class="tracking-wide font-semibold">Trend</span>
-    <div class="w-44 h-10 bg-gray-50 rounded-md flex justify-center items-center">
-      <button class="h-8 bg-white text-xs px-2 py-1 rounded-md mr-2 shadow-xl">This Week</button>
-      <button class="h-8 text-xs px-2 py-1 rounded-md text-gray-500 hover:text-indigo-300">
-        This Month
-      </button>
-    </div>
-  </div>
-  <LineChart class="w-full h-96 px-6" :options="options" />
-</template>

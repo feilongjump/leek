@@ -1,22 +1,3 @@
-<script setup lang="ts">
-import logo from '@/assets/logo.png'
-import sidebarImg from '@/assets/sidebar.png'
-import { ChartPieIcon, LogoutIcon, PencilIcon } from '@heroicons/vue/outline'
-
-const menus = [
-  {
-    name: 'Dashboard',
-    icon: ChartPieIcon,
-    pathName: 'Backstage.Dashboard'
-  },
-  {
-    name: 'Article',
-    icon: PencilIcon,
-    pathName: 'Backstage.Article'
-  }
-]
-</script>
-
 <template>
   <div id="sidebar-container">
     <!-- logo and menus -->
@@ -61,6 +42,25 @@ const menus = [
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import logo from '@/assets/logo.png'
+import sidebarImg from '@/assets/sidebar.png'
+import { ChartPieIcon, LogoutIcon, PencilIcon } from '@heroicons/vue/outline'
+
+const menus = [
+  {
+    name: 'Dashboard',
+    icon: ChartPieIcon,
+    pathName: 'Backstage.Dashboard'
+  },
+  {
+    name: 'Article',
+    icon: PencilIcon,
+    pathName: 'Backstage.Article'
+  }
+]
+</script>
 
 <style scoped>
 #sidebar-container {
