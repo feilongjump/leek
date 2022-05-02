@@ -19,4 +19,12 @@
   .hollow-error-btn {
     @apply hollow-base-btn text-red-500;
   }
+
+  .solid-base-btn {
+    @apply text-xs text-white rounded-lg px-3 py-2 hover:shadow-xl;
+  }
+  .solid-indigo-btn {
+    @apply solid-base-btn bg-indigo-400;
+  }
+
 }
