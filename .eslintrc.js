@@ -24,7 +24,9 @@ module.exports = {
       'error',
       { devDependencies: ['tailwind.config.js', 'vite.config.ts'] }
     ],
-    'vue/multi-word-component-names': 'off'
+    'vue/multi-word-component-names': 'off',
+    'no-param-reassign': 'off',
+    'class-methods-use-this': 'off'
   },
   settings: {
     'import/resolver': {
