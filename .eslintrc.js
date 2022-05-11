@@ -31,11 +31,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       alias: {
-        map: [
-          ['@', './src'],
-          ['@components', './src/components'],
-          ['@views', './src/views']
-        ],
+        map: [['@', './src']],
         extensions: ['.js', '.ts', '.vue']
       }
     }
