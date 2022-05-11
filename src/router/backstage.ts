@@ -12,7 +12,7 @@ const backstageRouter: Array<RouteRecordRaw> = [
       {
         path: 'dashboard',
         name: 'Backstage.Dashboard',
-        component: () => import('@views/backstage/dashboard/index.vue')
+        component: () => import('@/views/backstage/dashboard/index.vue')
       },
       ...articles
     ]

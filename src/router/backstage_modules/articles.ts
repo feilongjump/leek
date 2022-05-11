@@ -9,17 +9,17 @@ const articles: Array<RouteRecordRaw> = [
       {
         path: '',
         name: 'Backstage.Article',
-        component: () => import('@views/backstage/article/index.vue')
+        component: () => import('@/views/backstage/article/index.vue')
       },
       {
         path: 'add',
         name: 'Backstage.Article.Add',
-        component: () => import('@views/backstage/article/create.vue')
+        component: () => import('@/views/backstage/article/create.vue')
       },
       {
         path: ':id(\\d+)/edit',
         name: 'Backstage.Article.Edit',
-        component: () => import('@views/backstage/article/edit.vue')
+        component: () => import('@/views/backstage/article/edit.vue')
       }
     ]
   }

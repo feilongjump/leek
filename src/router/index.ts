@@ -9,7 +9,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@views/auth/login.vue')
+    component: () => import('@/views/auth/login.vue')
   },
   ...backstageRouter
 ]
