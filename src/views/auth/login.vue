@@ -78,7 +78,7 @@ const login = () => {
   AuthRequest.login(params)
     .then((response) => {
       localStorage.setItem('token_type', response.token_type)
-      localStorage.setItem('token', response.access_token)
+      localStorage.setItem('access_token', response.access_token)
     })
     .then(() => {
       ElMessage.success('登录成功！')
