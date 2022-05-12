@@ -101,10 +101,11 @@ class Request {
     return token
   }
 
-  public async request(method: string, url: string, params?: any): Promise<any> {
+  public async request(method: string, url: string, params?: any, data?: any): Promise<any> {
     const config = <AxiosRequestConfig>{
       url,
-      data: params,
+      params,
+      data,
       method
     }
     const result = await this.instance.request(config)
@@ -116,23 +117,23 @@ class Request {
     return result
   }
 
-  public async post(url: string, params: any): Promise<any> {
-    const result = await this.request('post', url, params)
+  public async post(url: string, params?: any, data?: any): Promise<any> {
+    const result = await this.request('post', url, params, data)
     return result
   }
 
-  public async put(url: string, params?: any): Promise<any> {
-    const result = await this.request('put', url, params)
+  public async put(url: string, params?: any, data?: any): Promise<any> {
+    const result = await this.request('put', url, params, data)
     return result
   }
 
-  public async patch(url: string, params?: any): Promise<any> {
-    const result = await this.request('patch', url, params)
+  public async patch(url: string, params?: any, data?: any): Promise<any> {
+    const result = await this.request('patch', url, params, data)
     return result
   }
 
-  public async delete(url: string): Promise<any> {
-    const result = this.request('delete', url)
+  public async delete(url: string, params?: any): Promise<any> {
+    const result = this.request('delete', url, params)
     return result
   }
 }
