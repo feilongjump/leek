@@ -176,33 +176,51 @@
         <div class="w-full border-t px-4 py-4 flex justify-between items-center">
           <div class="text-gray-400 text-sm">
             <span>Showing:</span>
-            <select class="text-black mx-3 outline-none">
+            <select
+              v-model="params.per_page"
+              class="text-black mx-3 outline-none"
+              @change="handleFilter"
+            >
               <option value="10">10</option>
               <option value="20">20</option>
               <option value="50">50</option>
             </select>
-            <span> of 5</span>
+            <span> of {{ data.meta.total }}</span>
           </div>
           <div class="flex">
             <ul class="flex items-center">
-              <li class="w-12 h-9 mr-2 flex justify-center items-center cursor-default">Prev</li>
               <li
-                class="w-9 h-9 flex justify-center items-center mr-2 cursor-default rounded-lg bg-indigo-400 text-white"
+                class="w-12 h-9 mr-2 flex justify-center items-center"
+                :class="[
+                  data.meta.current_page === 1
+                    ? 'cursor-default'
+                    : 'cursor-pointer hover:bg-indigo-100 hover:text-indigo-400'
+                ]"
+                @click="handlePages(data.meta.current_page - 1)"
               >
-                1
+                Prev
               </li>
               <li
-                class="w-9 h-9 flex justify-center items-center mr-2 cursor-pointer rounded-lg hover:bg-indigo-100 hover:text-indigo-400"
+                v-for="index of data.meta.last_page"
+                :key="index"
+                class="w-9 h-9 flex justify-center items-center mr-2 rounded-lg"
+                :class="[
+                  index === data.meta.current_page
+                    ? ' cursor-default bg-indigo-400 text-white'
+                    : 'hover:bg-indigo-100 hover:text-indigo-400 cursor-pointer'
+                ]"
+                @click="handlePages(index)"
               >
-                2
+                {{ index }}
               </li>
               <li
-                class="w-9 h-9 flex justify-center items-center mr-2 rounded-lg cursor-pointer hover:bg-indigo-100 hover:text-indigo-400"
-              >
-                3
-              </li>
-              <li
-                class="w-12 h-9 flex justify-center items-center cursor-pointer p-2 rounded-lg hover:bg-indigo-100 hover:text-indigo-400"
+                class="w-12 h-9 flex justify-center items-center p-2 rounded-lg"
+                :class="[
+                  data.meta.current_page === data.meta.last_page
+                    ? 'cursor-default'
+                    : 'cursor-pointer hover:bg-indigo-100 hover:text-indigo-400'
+                ]"
+                @click="handlePages(data.meta.current_page + 1)"
               >
                 Next
               </li>
@@ -225,11 +243,44 @@ import {
 } from '@heroicons/vue/outline'
 import { PencilIcon } from '@heroicons/vue/solid'
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-import { ref } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
+import Article from '@/api/article/index'
+import type { ListParams, ListResponse } from '@/api/common'
+import { ListResponseDefault } from '@/api/common'
+import { ArticleResponse } from '@/api/article/types'
+
+const data = reactive<ListResponse<ArticleResponse>>(new ListResponseDefault())
+const params = reactive<ListParams>({
+  page: 1,
+  per_page: 10
+})
+
+const getList = () => {
+  const ArticleRequest = new Article()
+  ArticleRequest.index(params).then((response) => {
+    data.data = response.data
+    data.links = response.links
+    data.meta = response.meta
+  })
+}
+
+const handleFilter = () => {
+  getList()
+}
+
+const handlePages = (page: number) => {
+  if (page < 1 || page > data.meta.last_page) return
+  params.page = page
+  getList()
+}
+
+onMounted(() => {
+  getList()
+})
 
 const status = ref([])
 const apply = async (close: () => void) => {
-  await console.info(status)
+  await getList()
   close()
 }
 </script>
