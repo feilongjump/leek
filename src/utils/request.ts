@@ -1,6 +1,7 @@
 import axios from 'axios'
 import type { AxiosInstance, AxiosRequestConfig } from 'axios'
 import { ElMessage } from 'element-plus'
+import router from '@/router'
 
 class Request {
   private baseURL: string = import.meta.env.VITE_APP_API_URL
@@ -27,7 +28,7 @@ class Request {
     this.axiosRequestConfig = {
       baseURL: this.baseURL,
       timeout: 10000,
-      withCredentials: true
+      withCredentials: false
     }
   }
 
@@ -60,13 +61,22 @@ class Request {
         const { response } = error
         switch (response.status) {
           case 401:
-            ElMessage.warning('先登录一下吧。')
+            ElMessage.warning(response.data.message)
+            if (router.currentRoute.value.path !== '/login') {
+              router.push({ name: 'Login' })
+            }
             break
           case 404:
             ElMessage.error('没找到你想要的东西！')
             break
           case 422:
-            ElMessage.warning('参数错误了，让我来提醒你一下！')
+            Object.keys(response.data.errors).forEach((key: string) => {
+              response.data.errors[key].forEach((item: string) => {
+                setTimeout(() => {
+                  ElMessage.warning(item)
+                }, 1)
+              })
+            })
             break
           default:
             ElMessage.error('发生了什么？过段时间再来提交错误吧。')
