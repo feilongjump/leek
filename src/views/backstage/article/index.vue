@@ -179,7 +179,7 @@
             <select
               v-model="params.per_page"
               class="text-black mx-3 outline-none"
-              @change="handleFilter"
+              @change="handleFilter()"
             >
               <option value="10">10</option>
               <option value="20">20</option>
@@ -196,7 +196,7 @@
                     ? 'cursor-default'
                     : 'cursor-pointer hover:bg-indigo-100 hover:text-indigo-400'
                 ]"
-                @click="handlePages(data.meta.current_page - 1)"
+                @click="handleFilter(data.meta.current_page - 1)"
               >
                 Prev
               </li>
@@ -209,7 +209,7 @@
                     ? ' cursor-default bg-indigo-400 text-white'
                     : 'hover:bg-indigo-100 hover:text-indigo-400 cursor-pointer'
                 ]"
-                @click="handlePages(index)"
+                @click="handleFilter(index)"
               >
                 {{ index }}
               </li>
@@ -220,7 +220,7 @@
                     ? 'cursor-default'
                     : 'cursor-pointer hover:bg-indigo-100 hover:text-indigo-400'
                 ]"
-                @click="handlePages(data.meta.current_page + 1)"
+                @click="handleFilter(data.meta.current_page + 1)"
               >
                 Next
               </li>
@@ -264,13 +264,17 @@ const getList = () => {
   })
 }
 
-const handleFilter = () => {
-  getList()
-}
-
-const handlePages = (page: number) => {
-  if (page < 1 || page > data.meta.last_page) return
-  params.page = page
+const handleFilter = (page?: number) => {
+  if (page && typeof page === 'number') {
+    if (page < 1 || page > data.meta.last_page) return
+    params.page = page
+  }
+  if (params.per_page !== data.meta.per_page) {
+    // 处理跳转页数，当每页显示数量与当前页的乘积大于总数时，跳转至最后一页
+    if (params.page * params.per_page > data.meta.total) {
+      params.page = Math.ceil(data.meta.total / params.per_page)
+    }
+  }
   getList()
 }
 
