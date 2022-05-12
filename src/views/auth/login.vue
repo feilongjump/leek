@@ -17,6 +17,7 @@
             <div class="w-full flex flex-col items-start">
               <span class="text-slate-300 text-sm">Username</span>
               <input
+                v-model="params.username"
                 class="w-full border-b-2 outline-none transition ease-in-out duration-300 focus:border-indigo-500"
                 type="text"
               />
@@ -26,6 +27,7 @@
             <div class="w-full flex flex-col items-start">
               <span class="text-slate-300 text-sm">Password</span>
               <input
+                v-model="params.password"
                 class="w-full border-b-2 outline-none transition ease-in-out duration-300 focus:border-indigo-500"
                 type="password"
               />
@@ -60,8 +62,27 @@
 import router from '@/router'
 import logo from '@/assets/logo.png'
 import authImage from '@/assets/auth.png'
+import Auth from '@/api/auth/index'
+import { reactive } from 'vue'
+import { LoginParams } from '@/api/auth/types'
+import { ElMessage } from 'element-plus'
+
+const params = reactive<LoginParams>({
+  username: '',
+  password: ''
+})
 
 const login = () => {
-  router.push({ name: 'Backstage' })
+  const AuthRequest = new Auth()
+  AuthRequest.login(params)
+    .then((response) => {
+      localStorage.setItem('token_type', response.token_type)
+      localStorage.setItem('token', response.access_token)
+    })
+    .then(() => {
+      ElMessage.success('登录成功！')
+
+      router.push({ name: 'Backstage' })
+    })
 }
 </script>
