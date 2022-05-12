@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen sm:flex sm:justify-center sm:items-center bg-gray-50">
     <div
-      class="w-full h-full bg-white sm:h-auto sm:w-11/12 xl:w-2/3 pt-4 sm:pt-12 pb-12 flex flex-col sm:flex-row sm:rounded-md sm:shadow-lg"
+      class="w-full h-full bg-white border sm:h-auto sm:w-11/12 xl:w-2/3 pt-4 sm:pt-12 pb-12 flex flex-col sm:flex-row sm:rounded-md sm:shadow-lg"
     >
       <!-- auth image -->
       <img class="w-full sm:w-1/2 sm:mx-2 lg:mx-4" :src="authImage" />

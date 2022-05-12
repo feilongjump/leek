@@ -66,7 +66,7 @@ const menus = [
 #sidebar-container {
   @apply h-screen w-0 md:w-24 xl:w-64
       fixed top-4 -left-24 md:left-4
-      bg-white rounded-xl shadow-xl
+      border bg-white rounded-xl shadow-xl
       transition-all duration-500 ease-in-out
       flex flex-col justify-between;
 }
