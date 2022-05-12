@@ -30,6 +30,7 @@
                 v-model="params.password"
                 class="w-full border-b-2 outline-none transition ease-in-out duration-300 focus:border-indigo-500"
                 type="password"
+                @keyup.enter="login"
               />
               <router-link
                 class="w-full flex justify-end mt-2 text-sm text-indigo-400 hover:text-indigo-500"
