@@ -1,4 +1,5 @@
 const scrollbar = require('@gradin/tailwindcss-scrollbar')
+const typography = require('@tailwindcss/typography')
 
 module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts}'],
@@ -14,5 +15,5 @@ module.exports = {
       }
     })
   },
-  plugins: [scrollbar]
+  plugins: [scrollbar, typography]
 }
