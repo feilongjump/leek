@@ -9,7 +9,7 @@
     </router-link>
   </div>
 
-  <div class="w-full bg-white rounded-xl shadow-xl py-2">
+  <div class="w-full border bg-white rounded-xl shadow-xl py-2">
     <div class="px-4 py-4 w-full flex justify-between flex-wrap items-center">
       <div class="w-full sm:w-72 relative">
         <SearchIcon class="w-4 h-4 text-gray-400 absolute top-[3px]" />
@@ -98,73 +98,21 @@
           <thead class="text-xs text-gray-700 uppercase bg-slate-50">
             <tr>
               <th scope="col" class="px-4 py-4">Title</th>
-              <th scope="col" class="px-4 py-4">Color</th>
-              <th scope="col" class="px-4 py-4">Category</th>
-              <th scope="col" class="px-4 py-4">Price</th>
-              <th scope="col" class="px-4 py-4">
-                <span class="sr-only">Edit</span>
-              </th>
+              <th scope="col" class="px-4 py-4">Created Time</th>
+              <th scope="col" class="px-4 py-4">Updated Time</th>
+              <th scope="col" class="px-4 py-4"></th>
             </tr>
           </thead>
           <tbody>
-            <tr class="bg-white">
+            <tr v-for="(item, index) in data.data" :key="index" class="bg-white">
               <th scope="row" class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap">
-                Apple MacBook Pro 17"
+                {{ item.title }}
               </th>
-              <td class="px-4 py-4">Sliver</td>
-              <td class="px-4 py-4">Laptop</td>
-              <td class="px-4 py-4">$2999</td>
+              <td class="px-4 py-4">{{ item.created_at }}</td>
+              <td class="px-4 py-4">{{ item.updated_at }}</td>
               <td class="px-4 py-4 flex justify-end">
                 <router-link
-                  :to="{ name: 'Backstage.Article.Edit', params: { id: 1 } }"
-                  class="flex hollow-indigo-btn"
-                >
-                  <PencilIcon class="w-4 h-4 mr-1" />Edit
-                </router-link>
-              </td>
-            </tr>
-            <tr class="bg-white">
-              <th scope="row" class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap">
-                Microsoft Surface Pro
-              </th>
-              <td class="px-4 py-4">White</td>
-              <td class="px-4 py-4">Laptop PC</td>
-              <td class="px-4 py-4">$1999</td>
-              <td class="px-4 py-4 flex justify-end">
-                <router-link
-                  :to="{ name: 'Backstage.Article.Edit', params: { id: 1 } }"
-                  class="flex hollow-indigo-btn"
-                >
-                  <PencilIcon class="w-4 h-4 mr-1" />Edit
-                </router-link>
-              </td>
-            </tr>
-            <tr class="bg-white">
-              <th scope="row" class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap">
-                Magic Mouse 2
-              </th>
-              <td class="px-4 py-4">Black</td>
-              <td class="px-4 py-4">Accessories</td>
-              <td class="px-4 py-4">$99</td>
-              <td class="px-4 py-4 flex justify-end">
-                <router-link
-                  :to="{ name: 'Backstage.Article.Edit', params: { id: 1 } }"
-                  class="flex hollow-indigo-btn"
-                >
-                  <PencilIcon class="w-4 h-4 mr-1" />Edit
-                </router-link>
-              </td>
-            </tr>
-            <tr class="bg-white">
-              <th scope="row" class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap">
-                Magic Mouse 2
-              </th>
-              <td class="px-4 py-4">Black</td>
-              <td class="px-4 py-4">Accessories</td>
-              <td class="px-4 py-4">$99</td>
-              <td class="px-4 py-4 flex justify-end">
-                <router-link
-                  :to="{ name: 'Backstage.Article.Edit', params: { id: 1 } }"
+                  :to="{ name: 'Backstage.Article.Edit', params: { id: item.id } }"
                   class="flex hollow-indigo-btn"
                 >
                   <PencilIcon class="w-4 h-4 mr-1" />Edit
