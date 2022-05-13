@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 #app {
-  @apply font-sans antialiased;
+  @apply font-sans antialiased tracking-wider;
 }
 @layer utilities {
   .activate-menu {
