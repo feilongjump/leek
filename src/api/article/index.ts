@@ -10,4 +10,22 @@ export default class Auth extends Request {
 
     return super.get(url, params)
   }
+
+  public show(id: string | string[]): Promise<ArticleResponse> {
+    const url = `${this.BASE_URL}/${id}`
+
+    return super.get(url)
+  }
+
+  public store(data: ArticleResponse): Promise<ArticleResponse> {
+    const url = `${this.BASE_URL}`
+
+    return super.post(url, '', data)
+  }
+
+  public update(id: number, data: ArticleResponse): Promise<ArticleResponse> {
+    const url = `${this.BASE_URL}/${id}`
+
+    return super.patch(url, '', data)
+  }
 }
