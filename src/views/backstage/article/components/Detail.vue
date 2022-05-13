@@ -17,46 +17,16 @@
         </router-link>
       </div>
     </div>
-    <div id="vditor" />
+    <Editor v-model:value="markdown" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ReplyIcon } from '@heroicons/vue/outline'
-import { ref, onMounted } from 'vue'
-import Vditor from 'vditor'
-import 'vditor/dist/index.css'
+import Editor from '@/components/Markdown/Editor.vue'
+import { ref } from 'vue'
 
-const vditor = ref<Vditor | null>(null)
-
-onMounted(() => {
-  vditor.value = new Vditor('vditor', {
-    // sv - 分屏预览，ir - 即时渲染，wysiwyg - 所见即所得
-    mode: 'sv',
-    minHeight: 873,
-    counter: {
-      // 启用计数器
-      enable: true
-    },
-    cache: {
-      // 缓存后的回调
-      after: (content) => {
-        console.info(content)
-      }
-    },
-    after: () => {
-      // vditor.value is a instance of Vditor now and thus can be safely used here
-      vditor.value!.setValue('> ### Write something well and try to improve yourself.')
-    }
-  })
-})
-
-defineProps({
-  isEdit: {
-    type: Boolean,
-    default: true
-  }
-})
+const markdown = ref<string>('')
 </script>
 
 <style>
