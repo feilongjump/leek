@@ -70,4 +70,8 @@ watch(props, (newValue) => {
 .bytemd {
   height: calc(theme('height.screen') - theme('height.14'));
 }
+
+.markdown-body {
+  @apply prose;
+}
 </style>
