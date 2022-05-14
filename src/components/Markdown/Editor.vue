@@ -18,7 +18,7 @@ import 'bytemd/dist/index.css'
 import 'juejin-markdown-themes/dist/juejin.min.css'
 
 const editorDom = ref()
-const editor = ref<Editor>(null)
+const editor = ref<any>()
 
 const emit = defineEmits(['update:value'])
 
