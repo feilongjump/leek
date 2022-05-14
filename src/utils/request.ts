@@ -39,7 +39,7 @@ class Request {
     this.instance.interceptors.request.use(
       (config: AxiosRequestConfig) => {
         // set token
-        config.headers.Authorization = this.getToken()
+        if (config.headers) config.headers.Authorization = this.getToken()
 
         return config
       },
