@@ -12,9 +12,10 @@
 </template>
 
 <script setup lang="ts">
-import LineChart from '@/components/charts/LineChart.vue'
+import LineChart from '@/components/Charts/LineChart.vue'
+import type { ECLineOption } from '@/components/Charts/types'
 
-const options = {
+const options = <ECLineOption>{
   tooltip: {
     trigger: 'axis',
     axisPointer: {

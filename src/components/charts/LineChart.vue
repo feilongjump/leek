@@ -4,17 +4,14 @@ import { onMounted, ref } from 'vue'
 import * as echarts from 'echarts/core'
 import {
   TitleComponent,
-  TitleComponentOption,
   TooltipComponent,
-  TooltipComponentOption,
   GridComponent,
-  GridComponentOption,
-  LegendComponent,
-  LegendComponentOption
+  LegendComponent
 } from 'echarts/components'
-import { LineChart, LineSeriesOption } from 'echarts/charts'
+import { LineChart } from 'echarts/charts'
 import { UniversalTransition } from 'echarts/features'
 import { CanvasRenderer } from 'echarts/renderers'
+import type { ECLineOption } from './types'
 
 echarts.use([
   TitleComponent,
@@ -26,16 +23,8 @@ echarts.use([
   UniversalTransition
 ])
 
-type ECOption = echarts.ComposeOption<
-  | TitleComponentOption
-  | TooltipComponentOption
-  | GridComponentOption
-  | LegendComponentOption
-  | LineSeriesOption
->
-
 interface Props {
-  options: ECOption
+  options: ECLineOption
 }
 
 const lineChart = ref<HTMLElement>()
