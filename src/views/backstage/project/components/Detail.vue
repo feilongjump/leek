@@ -12,7 +12,7 @@
         <button class="w-16 solid-indigo-btn" @click="publish">发布</button>
         <router-link
           class="hollow-indigo-btn flex justify-center items-center"
-          :back="{ path: '', go: '-1' }"
+          :to="{ name: 'Backstage.Project' }"
         >
           <ReplyIcon class="w-4 h-4 mr-1" />Return
         </router-link>
