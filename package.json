@@ -28,7 +28,8 @@
     "element-plus": "^2.1.10",
     "juejin-markdown-themes": "^1.29.2",
     "vue": "^3.2.25",
-    "vue-router": "^4.0.14"
+    "vue-router": "^4.0.14",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@gradin/tailwindcss-scrollbar": "^2.0.2",
