@@ -2,7 +2,7 @@ import Request from '@/utils/request'
 import { ListParams, ListResponse } from '@/api/common'
 import { ProjectResponse } from './types'
 
-export default class Auth extends Request {
+export default class Project extends Request {
   BASE_URL: string = 'projects'
 
   public index(params?: ListParams): Promise<ListResponse<ProjectResponse>> {
