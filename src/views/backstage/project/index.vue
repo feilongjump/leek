@@ -118,7 +118,7 @@
                   <PencilIcon class="w-4 h-4 mr-1" />Edit
                 </router-link>
                 <router-link
-                  :to="{ name: 'Backstage.Project.Detail', params: { id: item.id } }"
+                  :to="{ name: 'Backstage.Project.Column', params: { id: item.id } }"
                   class="flex hollow-indigo-btn ml-2"
                 >
                   <DocumentTextIcon class="w-4 h-4 mr-1" />Detail

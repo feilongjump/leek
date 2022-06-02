@@ -18,8 +18,8 @@ const projects: Array<RouteRecordRaw> = [
       },
       {
         path: ':id(\\d+)',
-        name: 'Backstage.Project.Detail',
-        component: () => import('@/views/backstage/project/detail.vue')
+        name: 'Backstage.Project.Column',
+        component: () => import('@/views/backstage/project/columnIndex.vue')
       },
       {
         path: ':id(\\d+)/edit',
