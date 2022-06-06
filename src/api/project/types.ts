@@ -10,12 +10,12 @@ export interface ProjectResponse {
 }
 
 export interface ProjectColumnCardResponse {
-  id: number
-  project_id: number
+  id?: number
+  project_column_id: number
   name: string
-  order: number
-  created_at: string
-  updated_at: string
+  order?: number
+  created_at?: string
+  updated_at?: string
 }
 
 export interface ProjectColumnResponse {
@@ -30,4 +30,8 @@ export interface ProjectColumnResponse {
 
 export interface ProjectColumnParams {
   project?: string | string[]
+}
+
+export interface ProjectColumnCardParams {
+  column?: number
 }

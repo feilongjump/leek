@@ -14,7 +14,12 @@
         <span>{{ column.name }}</span>
       </div>
 
-      <draggable :list="column.cards" item-key="id" group="{{column.name}}">
+      <draggable
+        :list="column.cards"
+        item-key="id"
+        group="{{column.name}}"
+        @change="handle($event, column.id)"
+      >
         <template #item="{ element }">
           <div
             class="w-full min-h-[8rem] bg-white rounded-xl border p-5 mb-4 hover:shadow-md cursor-pointer"
@@ -36,21 +41,51 @@
 import { onMounted, ref, reactive } from 'vue'
 import draggable from 'vuedraggable'
 import ProjectColumn from '@/api/project/column'
-import { ProjectColumnParams, ProjectColumnResponse } from '@/api/project/types'
+import ProjectColumnCard from '@/api/project/card'
+import {
+  ProjectColumnParams,
+  ProjectColumnResponse,
+  ProjectColumnCardResponse
+} from '@/api/project/types'
 import router from '@/router'
+import { ListParams } from '@/api/common'
 
 const { id } = router.currentRoute.value.params
-const params = reactive<ProjectColumnParams>({
-  project: id
+const params = reactive<ProjectColumnParams | ListParams>({
+  project: id,
+  include: 'cards'
 })
 const columns = ref<ProjectColumnResponse[]>()
+const card = ref<ProjectColumnCardResponse>({
+  project_column_id: 0,
+  name: ''
+})
 const ProjectColumnRequest = new ProjectColumn()
+const ProjectColumnCardRequest = new ProjectColumnCard()
 
 const getColumns = () => {
   ProjectColumnRequest.index(params).then((response: ProjectColumnResponse[]) => {
     columns.value = response
   })
 }
+
+const handle = (evt: any, columnId: number) => {
+  if (evt.added) {
+    card.value.project_column_id = columnId
+    card.value.id = evt.added.element.id
+    card.value.name = evt.added.element.name
+
+    const cardParams = {
+      project: id,
+      column: columnId
+    }
+
+    ProjectColumnCardRequest.update(evt.added.element.id, cardParams, card.value).then(() => {})
+  }
+
+  return true
+}
+
 onMounted(() => {
   getColumns()
 })
