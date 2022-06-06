@@ -33,41 +33,25 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref, reactive } from 'vue'
 import draggable from 'vuedraggable'
+import ProjectColumn from '@/api/project/column'
+import { ProjectColumnParams, ProjectColumnResponse } from '@/api/project/types'
+import router from '@/router'
 
-const columns = ref([
-  {
-    id: 1,
-    name: 'Test',
-    cards: [
-      {
-        id: 3,
-        name: 'Test'
-      },
-      {
-        id: 4,
-        name: 'Test'
-      },
-      {
-        id: 5,
-        name: 'Test'
-      }
-    ]
-  },
-  {
-    id: 2,
-    name: 'Done',
-    cards: [
-      {
-        id: 1,
-        name: 'Test-Done'
-      },
-      {
-        id: 2,
-        name: 'Test-Done'
-      }
-    ]
-  }
-])
+const { id } = router.currentRoute.value.params
+const params = reactive<ProjectColumnParams>({
+  project: id
+})
+const columns = ref<ProjectColumnResponse[]>()
+const ProjectColumnRequest = new ProjectColumn()
+
+const getColumns = () => {
+  ProjectColumnRequest.index(params).then((response: ProjectColumnResponse[]) => {
+    columns.value = response
+  })
+}
+onMounted(() => {
+  getColumns()
+})
 </script>
