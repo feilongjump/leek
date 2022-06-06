@@ -1,10 +1,10 @@
 /**
- * 解析带 ':' 的 url 替换其为真实值
+ * 解析带 ':' 的 url 替换其为真实值，且删除此参数
  * @param {string} url
  * @param {any} params
- * @returns {string}
+ * @returns {object}
  */
-export default function parseUrl(url: string, params: any): string {
+export default function parseUrlAndParams(url: string, params: any): object {
   let str = ''
 
   url.split('/').forEach((value) => {
@@ -12,11 +12,14 @@ export default function parseUrl(url: string, params: any): string {
     if (valueIndex !== -1) {
       if (params[value.substring(valueIndex + 1)]) {
         value = params[value.substring(valueIndex + 1)]
+        params[value.substring(valueIndex + 1)] = undefined
       }
     }
 
     str += `${value}/`
   })
 
-  return str.substring(0, str.lastIndexOf('/'))
+  url = str.substring(0, str.lastIndexOf('/'))
+
+  return { url, params }
 }

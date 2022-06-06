@@ -2,7 +2,7 @@ import axios from 'axios'
 import type { AxiosInstance, AxiosRequestConfig } from 'axios'
 import { ElMessage } from 'element-plus'
 import router from '@/router'
-import parseUrl from './index'
+import parseUrlAndParams from './index'
 
 class Request {
   private baseURL: string = import.meta.env.VITE_APP_API_URL
@@ -103,11 +103,10 @@ class Request {
   }
 
   public async request(method: string, url: string, params?: any, data?: any): Promise<any> {
-    url = parseUrl(url, params)
+    const parseResult = parseUrlAndParams(url, params)
 
     const config = <AxiosRequestConfig>{
-      url,
-      params,
+      ...parseResult,
       data,
       method
     }
