@@ -10,10 +10,13 @@ export default class ProjectColumnCard extends Request {
     return super.get(url)
   }
 
-  public store(data: ProjectColumnCardResponse): Promise<ProjectColumnCardResponse> {
+  public store(
+    params: ProjectColumnParams | ProjectColumnCardParams,
+    data: ProjectColumnCardResponse
+  ): Promise<ProjectColumnCardResponse> {
     const url = `${this.BASE_URL}`
 
-    return super.post(url, '', data)
+    return super.post(url, params, data)
   }
 
   public update(

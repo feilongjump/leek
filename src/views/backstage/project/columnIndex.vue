@@ -29,7 +29,7 @@
         </template>
       </draggable>
       <div
-        v-show="card.project_column_id !== 0 && card.project_column_id === column.id"
+        v-show="showColumnCardDom !== 0 && showColumnCardDom === column.id"
         class="w-full min-h-[8rem] bg-white rounded-xl border p-5 mb-4 hover:shadow-md cursor-pointer"
       >
         <textarea
@@ -41,15 +41,15 @@
           <button class="hollow-base-btn hollow-indigo-btn mr-2" @click="showCardDom(0)">
             Cancel
           </button>
-          <button class="solid-base-btn solid-indigo-btn">Create</button>
+          <button class="solid-base-btn solid-indigo-btn" @click="createCard">Create</button>
         </div>
       </div>
       <div
-        v-show="card.project_column_id === 0 || card.project_column_id !== column.id"
+        v-show="showColumnCardDom === 0 || card.project_column_id !== column.id"
         class="w-full h-12 rounded-xl border border-dashed border-indigo-300 flex justify-center items-center cursor-pointer"
         @click="showCardDom(column.id)"
       >
-        <span> + Add Columns </span>
+        <span> + Add Card </span>
       </div>
     </div>
   </div>
@@ -73,39 +73,85 @@ const params = reactive<ProjectColumnParams | ListParams>({
   project: id,
   include: 'cards'
 })
-const columns = ref<ProjectColumnResponse[]>()
+const columns = ref<ProjectColumnResponse[]>([])
 const card = ref<ProjectColumnCardResponse>({
   project_column_id: 0,
   name: ''
 })
+const showColumnCardDom = ref<number>(0)
+const cardParams = ref({
+  project: id,
+  column: 0
+})
 const ProjectColumnRequest = new ProjectColumn()
 const ProjectColumnCardRequest = new ProjectColumnCard()
 
+/**
+ * 获取 columns
+ */
 const getColumns = () => {
   ProjectColumnRequest.index(params).then((response: ProjectColumnResponse[]) => {
     columns.value = response
   })
 }
 
+/**
+ * 重置 card 默认值 & 对添加 card dom 元素进行初始化
+ */
+const resetCardValue = () => {
+  card.value.project_column_id = 0
+  card.value.name = ''
+
+  showColumnCardDom.value = 0
+}
+
+/**
+ * 更新 card 所属 column
+ */
 const handle = (evt: any, columnId: number) => {
   if (evt.added) {
     card.value.project_column_id = columnId
     card.value.id = evt.added.element.id
     card.value.name = evt.added.element.name
 
-    const cardParams = {
-      project: id,
-      column: columnId
-    }
+    cardParams.value.project = id
+    cardParams.value.column = columnId
 
-    ProjectColumnCardRequest.update(evt.added.element.id, cardParams, card.value).then(() => {})
+    ProjectColumnCardRequest.update(evt.added.element.id, cardParams.value, card.value).then(
+      () => {}
+    )
+
+    // 重置其默认值
+    resetCardValue()
   }
 
   return true
 }
 
+/**
+ * 显示添加 card dom 元素
+ */
 const showCardDom = (columnId: number) => {
   card.value.project_column_id = columnId
+
+  showColumnCardDom.value = columnId
+}
+
+/**
+ * 创建 card
+ */
+const createCard = () => {
+  cardParams.value.column = card.value.project_column_id
+
+  ProjectColumnCardRequest.store(cardParams.value, card.value).then((response) => {
+    columns.value?.forEach((column, index) => {
+      if (column.id === card.value.project_column_id) {
+        columns.value[index].cards?.push(response)
+      }
+    })
+
+    resetCardValue()
+  })
 }
 
 onMounted(() => {
