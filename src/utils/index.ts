@@ -10,9 +10,14 @@ export default function parseUrlAndParams(url: string, params: any): object {
   url.split('/').forEach((value) => {
     const valueIndex = value.indexOf(':')
     if (valueIndex !== -1) {
-      if (params[value.substring(valueIndex + 1)]) {
-        value = params[value.substring(valueIndex + 1)]
-        params[value.substring(valueIndex + 1)] = undefined
+      const paramsIndex = value.substring(valueIndex + 1)
+
+      if (params[paramsIndex]) {
+        const paramsValue = params[paramsIndex]
+
+        params[paramsIndex] = undefined
+
+        value = paramsValue
       }
     }
 
