@@ -29,7 +29,25 @@
         </template>
       </draggable>
       <div
+        v-show="card.project_column_id !== 0 && card.project_column_id === column.id"
+        class="w-full min-h-[8rem] bg-white rounded-xl border p-5 mb-4 hover:shadow-md cursor-pointer"
+      >
+        <textarea
+          v-model="card.name"
+          class="w-full outline-none border rounded border-indigo-300 px-3 py-2"
+          rows="3"
+        ></textarea>
+        <div class="w-full mt-4 flex justify-end">
+          <button class="hollow-base-btn hollow-indigo-btn mr-2" @click="showCardDom(0)">
+            Cancel
+          </button>
+          <button class="solid-base-btn solid-indigo-btn">Create</button>
+        </div>
+      </div>
+      <div
+        v-show="card.project_column_id === 0 || card.project_column_id !== column.id"
         class="w-full h-12 rounded-xl border border-dashed border-indigo-300 flex justify-center items-center cursor-pointer"
+        @click="showCardDom(column.id)"
       >
         <span> + Add Columns </span>
       </div>
@@ -84,6 +102,10 @@ const handle = (evt: any, columnId: number) => {
   }
 
   return true
+}
+
+const showCardDom = (columnId: number) => {
+  card.value.project_column_id = columnId
 }
 
 onMounted(() => {
