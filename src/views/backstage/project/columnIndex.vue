@@ -52,6 +52,7 @@
         <span> + Add Card </span>
       </div>
     </div>
+    <div>`12`</div>
   </div>
 </template>
 
@@ -141,6 +142,7 @@ const showCardDom = (columnId: number) => {
  * 创建 card
  */
 const createCard = () => {
+  cardParams.value.project = id
   cardParams.value.column = card.value.project_column_id
 
   ProjectColumnCardRequest.store(cardParams.value, card.value).then((response) => {
