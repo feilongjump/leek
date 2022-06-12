@@ -129,14 +129,14 @@ const resetCardValue = () => {
 /**
  * 更新 card 所属 column
  */
-const handle = (evt: any, columnId: number) => {
+const handle = (evt: any, columnId: number | undefined) => {
   if (evt.added) {
-    card.value.project_column_id = columnId
+    card.value.project_column_id = columnId ?? 0
     card.value.id = evt.added.element.id
     card.value.name = evt.added.element.name
 
     cardParams.value.project = id
-    cardParams.value.column = columnId
+    cardParams.value.column = columnId ?? 0
 
     ProjectColumnCardRequest.update(evt.added.element.id, cardParams.value, card.value).then(
       () => {}
@@ -152,10 +152,10 @@ const handle = (evt: any, columnId: number) => {
 /**
  * 显示添加 card dom 元素
  */
-const showCardDom = (columnId: number) => {
-  card.value.project_column_id = columnId
+const showCardDom = (columnId: number | undefined) => {
+  card.value.project_column_id = columnId ?? 0
 
-  showColumnCardDom.value = columnId
+  showColumnCardDom.value = columnId ?? 0
 }
 
 /**
