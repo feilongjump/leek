@@ -10,8 +10,8 @@
   </div>
   <div class="flex">
     <div v-for="(column, index) in columns" :key="index" class="w-80 min-h-[2rem] mr-8">
-      <div class="text-center mb-4">
-        <span>{{ column.name }}</span>
+      <div class="h-16 mb-4 flex justify-center items-center">
+        <span class="">{{ column.name }}</span>
       </div>
 
       <draggable
@@ -52,11 +52,23 @@
         <span> + Add Card </span>
       </div>
     </div>
-    <div>`12`</div>
+    <div class="w-80 h-16 bg-white border rounded-xl p-4">
+      <div class="w-full h-full relative">
+        <input
+          v-model="column.name"
+          class="w-full h-full outline-none border-b-2 border-gray-300 py-1 pl-2 pr-8 focus:border-indigo-400"
+          type="text"
+          placeholder="Create Column"
+          @keyup.enter="createColumn"
+        />
+        <PencilIcon class="h-5 w-5 absolute top-1 right-1 cursor-pointer" @click="createColumn" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { PencilIcon } from '@heroicons/vue/outline'
 import { onMounted, ref, reactive } from 'vue'
 import draggable from 'vuedraggable'
 import ProjectColumn from '@/api/project/column'
@@ -75,6 +87,14 @@ const params = reactive<ProjectColumnParams | ListParams>({
   include: 'cards'
 })
 const columns = ref<ProjectColumnResponse[]>([])
+const column = ref<ProjectColumnResponse>({
+  project_id: Number(id),
+  name: ''
+})
+const columnParams = ref({
+  project: id,
+  include: 'cards'
+})
 const card = ref<ProjectColumnCardResponse>({
   project_column_id: 0,
   name: ''
@@ -146,13 +166,24 @@ const createCard = () => {
   cardParams.value.column = card.value.project_column_id
 
   ProjectColumnCardRequest.store(cardParams.value, card.value).then((response) => {
-    columns.value?.forEach((column, index) => {
-      if (column.id === card.value.project_column_id) {
+    columns.value?.forEach((columnItem, index) => {
+      if (columnItem.id === card.value.project_column_id) {
         columns.value[index].cards?.push(response)
       }
     })
 
     resetCardValue()
+  })
+}
+
+/**
+ * 创建 Column
+ */
+const createColumn = () => {
+  ProjectColumnRequest.store(columnParams.value, column.value).then((response) => {
+    columns.value.push(response)
+
+    column.value.name = ''
   })
 }
 

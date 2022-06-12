@@ -11,10 +11,13 @@ export default class ProjectColumn extends Request {
     return super.get(url, params)
   }
 
-  public store(data: ProjectColumnResponse): Promise<ProjectColumnResponse> {
+  public store(
+    params: ProjectColumnParams,
+    data: ProjectColumnResponse
+  ): Promise<ProjectColumnResponse> {
     const url = `${this.BASE_URL}`
 
-    return super.post(url, '', data)
+    return super.post(url, params, data)
   }
 
   public update(id: number, data: ProjectColumnResponse): Promise<ProjectColumnResponse> {

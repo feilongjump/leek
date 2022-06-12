@@ -19,12 +19,12 @@ export interface ProjectColumnCardResponse {
 }
 
 export interface ProjectColumnResponse {
-  id: number
+  id?: number
   project_id: number
   name: string
-  order: number
-  created_at: string
-  updated_at: string
+  order?: number
+  created_at?: string
+  updated_at?: string
   cards?: Array<ProjectColumnCardResponse>
 }
 
