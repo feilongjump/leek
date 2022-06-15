@@ -1,5 +1,5 @@
 <template>
-  <div class="ranking w-full pt-12">
+  <div class="ranking w-full overflow-x-auto pt-12">
     <table class="w-full text-sm text-left text-gray-500">
       <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700">
         <tr>

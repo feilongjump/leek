@@ -93,7 +93,7 @@
       </div>
     </div>
     <div class="border-t-2">
-      <div class="w-full">
+      <div class="w-full overflow-x-auto">
         <table class="w-full text-sm text-left text-gray-500">
           <thead class="text-xs text-gray-700 uppercase bg-slate-50">
             <tr>
@@ -121,60 +121,60 @@
             </tr>
           </tbody>
         </table>
-        <div class="w-full border-t px-4 py-4 flex justify-between items-center">
-          <div class="text-gray-400 text-sm">
-            <span>Showing:</span>
-            <select
-              v-model="params.per_page"
-              class="text-black mx-3 outline-none"
-              @change="handleFilter()"
+      </div>
+      <div class="w-full border-t px-4 py-4 flex justify-between items-center">
+        <div class="text-gray-400 text-sm">
+          <span>Showing:</span>
+          <select
+            v-model="params.per_page"
+            class="text-black mx-3 outline-none"
+            @change="handleFilter()"
+          >
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
+          <span> of {{ data.meta.total }}</span>
+        </div>
+        <div class="flex">
+          <ul class="flex items-center">
+            <li
+              class="w-12 h-9 mr-2 flex justify-center items-center"
+              :class="[
+                data.meta.current_page === 1
+                  ? 'cursor-default'
+                  : 'cursor-pointer hover:bg-indigo-100 hover:text-indigo-400'
+              ]"
+              @click="handleFilter(data.meta.current_page - 1)"
             >
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="50">50</option>
-            </select>
-            <span> of {{ data.meta.total }}</span>
-          </div>
-          <div class="flex">
-            <ul class="flex items-center">
-              <li
-                class="w-12 h-9 mr-2 flex justify-center items-center"
-                :class="[
-                  data.meta.current_page === 1
-                    ? 'cursor-default'
-                    : 'cursor-pointer hover:bg-indigo-100 hover:text-indigo-400'
-                ]"
-                @click="handleFilter(data.meta.current_page - 1)"
-              >
-                Prev
-              </li>
-              <li
-                v-for="index of data.meta.last_page"
-                :key="index"
-                class="w-9 h-9 flex justify-center items-center mr-2 rounded-lg"
-                :class="[
-                  index === data.meta.current_page
-                    ? ' cursor-default bg-indigo-400 text-white'
-                    : 'hover:bg-indigo-100 hover:text-indigo-400 cursor-pointer'
-                ]"
-                @click="handleFilter(index)"
-              >
-                {{ index }}
-              </li>
-              <li
-                class="w-12 h-9 flex justify-center items-center p-2 rounded-lg"
-                :class="[
-                  data.meta.current_page === data.meta.last_page
-                    ? 'cursor-default'
-                    : 'cursor-pointer hover:bg-indigo-100 hover:text-indigo-400'
-                ]"
-                @click="handleFilter(data.meta.current_page + 1)"
-              >
-                Next
-              </li>
-            </ul>
-            <button></button>
-          </div>
+              Prev
+            </li>
+            <li
+              v-for="index of data.meta.last_page"
+              :key="index"
+              class="w-9 h-9 flex justify-center items-center mr-2 rounded-lg"
+              :class="[
+                index === data.meta.current_page
+                  ? ' cursor-default bg-indigo-400 text-white'
+                  : 'hover:bg-indigo-100 hover:text-indigo-400 cursor-pointer'
+              ]"
+              @click="handleFilter(index)"
+            >
+              {{ index }}
+            </li>
+            <li
+              class="w-12 h-9 flex justify-center items-center p-2 rounded-lg"
+              :class="[
+                data.meta.current_page === data.meta.last_page
+                  ? 'cursor-default'
+                  : 'cursor-pointer hover:bg-indigo-100 hover:text-indigo-400'
+              ]"
+              @click="handleFilter(data.meta.current_page + 1)"
+            >
+              Next
+            </li>
+          </ul>
+          <button></button>
         </div>
       </div>
     </div>

@@ -71,9 +71,9 @@ const menus = [
 
 <style scoped>
 #navbar-container {
-  @apply h-12 w-screen md:h-20
+  @apply h-12 w-screen md:h-20 z-50
     px-2 md:px-4 ml-0 md:ml-32 xl:ml-72
-    fixed md:top-4
+    absolute md:fixed md:top-4
     border bg-white rounded-b-xl md:rounded-xl shadow-xl
     transition-all duration-500 ease-in-out
     flex justify-between items-center;
