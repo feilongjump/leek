@@ -5,10 +5,14 @@
         <li
           v-for="(item, index) in menus"
           :key="index"
-          class="w-8 h-8 rounded-full p-1 mr-6 text-white flex justify-center items-center"
-          :class="item.bgColor"
+          class="w-8 h-8 rounded-full p-1 mr-6 text-gray-400 flex justify-center items-center"
         >
-          <component :is="item.icon" class="h-6 w-6 stroke-2" :class="item.strokeColor"></component>
+          <router-link
+            class="w-full h-full flex justify-center xl:justify-start"
+            :to="{ name: item.pathName }"
+          >
+            <component :is="item.icon" class="h-6 w-6 stroke-2"></component>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -30,43 +34,8 @@
 
 <script setup lang="ts">
 import avatar from '@/assets/avatar.jpg'
-import {
-  BeakerIcon,
-  ArchiveIcon,
-  CakeIcon,
-  ColorSwatchIcon,
-  FireIcon,
-  BellIcon,
-  ChatIcon
-} from '@heroicons/vue/outline'
-
-const menus = [
-  {
-    icon: BeakerIcon,
-    bgColor: 'bg-indigo-100',
-    strokeColor: 'stroke-indigo-400'
-  },
-  {
-    icon: ArchiveIcon,
-    bgColor: 'bg-gray-100',
-    strokeColor: 'stroke-gray-400'
-  },
-  {
-    icon: CakeIcon,
-    bgColor: 'bg-gray-100',
-    strokeColor: 'stroke-gray-400'
-  },
-  {
-    icon: ColorSwatchIcon,
-    bgColor: 'bg-gray-100',
-    strokeColor: 'stroke-gray-400'
-  },
-  {
-    icon: FireIcon,
-    bgColor: 'bg-gray-100',
-    strokeColor: 'stroke-gray-400'
-  }
-]
+import { BellIcon, ChatIcon } from '@heroicons/vue/outline'
+import menus from './menu'
 </script>
 
 <style scoped>

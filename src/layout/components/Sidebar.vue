@@ -46,36 +46,8 @@
 <script setup lang="ts">
 import logo from '@/assets/logo.png'
 import sidebarImg from '@/assets/sidebar.png'
-import {
-  ChartPieIcon,
-  LogoutIcon,
-  PencilIcon,
-  ClipboardListIcon,
-  BookOpenIcon
-} from '@heroicons/vue/outline'
-
-const menus = [
-  {
-    name: 'Dashboard',
-    icon: ChartPieIcon,
-    pathName: 'Backstage.Dashboard'
-  },
-  {
-    name: 'Article',
-    icon: PencilIcon,
-    pathName: 'Backstage.Article'
-  },
-  {
-    name: 'Novel',
-    icon: BookOpenIcon,
-    pathName: 'Backstage.Novel'
-  },
-  {
-    name: 'Project',
-    icon: ClipboardListIcon,
-    pathName: 'Backstage.Project'
-  }
-]
+import { LogoutIcon } from '@heroicons/vue/outline'
+import menus from './menu'
 </script>
 
 <style scoped>
