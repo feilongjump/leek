@@ -2,6 +2,7 @@ import { RouteRecordRaw } from 'vue-router'
 import Layout from '@/layout/index.vue'
 import articles from './backstage_modules/articles'
 import projects from './backstage_modules/projects'
+import novels from './backstage_modules/novels'
 
 const backstageRouter: Array<RouteRecordRaw> = [
   {
@@ -16,7 +17,8 @@ const backstageRouter: Array<RouteRecordRaw> = [
         component: () => import('@/views/backstage/dashboard/index.vue')
       },
       ...articles,
-      ...projects
+      ...projects,
+      ...novels
     ]
   }
 ]
