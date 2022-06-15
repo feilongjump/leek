@@ -1,7 +1,7 @@
 export interface NovelParams {
   keyword?: string
-  novel?: string
-  chapter?: string
+  novel?: string | string[]
+  chapter?: string | string[]
 }
 
 interface NovelSearchHeader {
@@ -48,7 +48,26 @@ export interface NovelResponse {
   chapters: Array<NovelChapters>
 }
 
-interface ChapterLinksDetails {
+export class NovelResponseDefault implements NovelResponse {
+  info = {
+    image: '',
+    title: '',
+    author: '',
+    progress: '',
+    category: '',
+    updated_at: '',
+    introduce: ''
+  }
+
+  chapters = [
+    {
+      title: '',
+      link: ''
+    }
+  ]
+}
+
+export interface ChapterLinksDetails {
   title: string
   link: string
   is_novel_link: boolean

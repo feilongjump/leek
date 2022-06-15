@@ -5,7 +5,7 @@ export default class Novel extends Request {
   BASE_URL: string = 'novels'
 
   public search(params: NovelParams): Promise<NovelSearchResponse> {
-    const url = `${this.BASE_URL}`
+    const url = `${this.BASE_URL}/search`
 
     return super.get(url, params)
   }

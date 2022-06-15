@@ -12,7 +12,7 @@ const novels: Array<RouteRecordRaw> = [
         component: () => import('@/views/backstage/novel/index.vue')
       },
       {
-        path: ':novel/chapters/:chapter',
+        path: ':novel/chapter/:chapter',
         name: 'Backstage.Novel.Chapter',
         component: () => import('@/views/backstage/novel/chapter.vue')
       },
