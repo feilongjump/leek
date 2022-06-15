@@ -16,7 +16,7 @@
       </div>
       <div class="w-1/2 pl-12 flex justify-between items-center">
         <div class="w-1/2 flex justify-center">
-          <TemplateIcon class="h-6 w-6 stroke-indigo-400" />
+          <DarkMode />
         </div>
         <div class="w-1/2 flex justify-center">
           <img class="h-8 w-8 rounded-full" :src="avatar" />
@@ -29,7 +29,8 @@
 <script setup lang="ts">
 import logo from '@/assets/logo.png'
 import avatar from '@/assets/avatar.jpg'
-import { BellIcon, ChatIcon, TemplateIcon } from '@heroicons/vue/outline'
+import { BellIcon, ChatIcon } from '@heroicons/vue/outline'
+import DarkMode from './DarkMode.vue'
 </script>
 
 <style scoped>

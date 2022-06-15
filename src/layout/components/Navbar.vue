@@ -26,6 +26,7 @@
       <div class="flex items-center">
         <BellIcon class="h-6 w-6 stroke-blue-400 mr-6" />
         <ChatIcon class="h-6 w-6 stroke-indigo-400 mr-6" />
+        <DarkMode class="mr-6" />
         <img class="h-8 w-8 rounded-full" :src="avatar" />
       </div>
     </div>
@@ -35,6 +36,7 @@
 <script setup lang="ts">
 import avatar from '@/assets/avatar.jpg'
 import { BellIcon, ChatIcon } from '@heroicons/vue/outline'
+import DarkMode from './DarkMode.vue'
 import menus from './menu'
 </script>
 
