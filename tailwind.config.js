@@ -2,6 +2,7 @@ const scrollbar = require('@gradin/tailwindcss-scrollbar')
 const typography = require('@tailwindcss/typography')
 
 module.exports = {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{vue,js,ts}'],
   theme: {
     extend: {
