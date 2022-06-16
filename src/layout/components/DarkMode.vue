@@ -27,10 +27,12 @@ const change = (mode: Mode) => {
 
   // On page load or when changing themes, best to add inline in `head` to avoid FOUC
   if (mode === 'dark') {
-    document.documentElement.classList.add('dark')
+    document.documentElement.classList.remove('light')
   } else {
     document.documentElement.classList.remove('dark')
   }
+
+  document.documentElement.classList.add(mode)
 }
 
 const props = defineProps({
