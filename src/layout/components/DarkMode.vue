@@ -1,16 +1,16 @@
 <template>
   <SunIcon
-    v-show="darkMode == 'light'"
-    class="stroke-yellow-300"
+    v-show="darkMode == 'dark'"
+    class="stroke-yellow-300 cursor-pointer"
     :class="props.class"
-    @click="change('dark')"
+    @click="change('light')"
   />
 
   <MoonIcon
-    v-show="darkMode == 'dark'"
-    class="stroke-slate-500"
+    v-show="darkMode == 'light'"
+    class="stroke-slate-500 cursor-pointer"
     :class="props.class"
-    @click="change('light')"
+    @click="change('dark')"
   />
 </template>
 
@@ -20,23 +20,17 @@ import { ref } from 'vue'
 
 type Mode = 'dark' | 'light'
 
-const darkMode = ref<Mode>('dark')
+const darkMode = ref<Mode>('light')
 
 const change = (mode: Mode) => {
   darkMode.value = mode
 
   // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-  if (
-    localStorage.theme === 'dark' ||
-    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-  ) {
+  if (mode === 'dark') {
     document.documentElement.classList.add('dark')
   } else {
     document.documentElement.classList.remove('dark')
   }
-
-  // Whenever the user explicitly chooses light mode
-  localStorage.theme = mode
 }
 
 const props = defineProps({
