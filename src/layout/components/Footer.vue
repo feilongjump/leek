@@ -37,4 +37,12 @@ import DarkMode from './DarkMode.vue'
 footer {
   background: radial-gradient(circle at 50% 0%, transparent, transparent 32px, #fff 33px);
 }
+.dark footer {
+  background: radial-gradient(
+    circle at 50% 0%,
+    transparent,
+    transparent 32px,
+    rgb(15, 23, 42) 33px
+  );
+}
 </style>
