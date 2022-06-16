@@ -1,24 +1,28 @@
 <template>
   <div class="w-full mb-6 flex justify-between items-center">
-    <span class="text-2xl font-bold">Chapter</span>
+    <span class="text-2xl font-bold dark:text-gray-300">Chapter</span>
   </div>
 
-  <div class="w-full border bg-white rounded-xl shadow-xl py-2">
+  <div
+    class="w-full border bg-white dark:bg-slate-900 dark:border-slate-900 rounded-xl shadow-xl py-2"
+  >
     <div class="px-4 py-4 w-full flex justify-between flex-wrap items-center">
       <div class="w-full sm:w-72 relative">
         <SearchIcon class="w-4 h-4 text-gray-400 absolute top-[3px]" />
         <input
           v-model="params.keyword"
-          class="w-full pl-7 pb-1 border-b outline-none focus:border-indigo-500 transition ease-in-out duration-300"
+          class="w-full pl-7 pb-1 border-b outline-none focus:border-indigo-500 transition ease-in-out duration-300 dark:bg-slate-900 dark:focus:border-indigo-500 dark:text-gray-300"
           placeholder="Search ..."
           @keyup.enter="getList"
         />
       </div>
     </div>
-    <div v-show="!isEmpty(data)" class="border-t-2">
+    <div v-show="!isEmpty(data)" class="border-t-2 dark:border-slate-800">
       <div class="w-full overflow-x-auto">
-        <table class="w-full text-sm text-left text-gray-500">
-          <thead class="text-xs text-gray-700 uppercase bg-slate-50">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead
+            class="text-xs text-gray-700 uppercase bg-slate-50 dark:bg-gray-700 dark:text-gray-300"
+          >
             <tr>
               <th v-for="(header, index) in data.header" :key="index" scope="col" class="px-4 py-4">
                 {{ header }}
@@ -27,7 +31,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, index) in data.body" :key="index" class="bg-white">
+            <tr v-for="(item, index) in data.body" :key="index" class="bg-white dark:bg-slate-900">
               <th class="px-4 py-4">{{ item.category }}</th>
               <td class="px-4 py-4 font-medium text-gray-900">{{ item.title }}</td>
               <td class="px-4 py-4">{{ item.latestChapter }}</td>

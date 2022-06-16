@@ -1,12 +1,12 @@
 <template>
-  <footer class="w-screen h-12 fixed bottom-0 px-6 flex md:hidden rounded-t-xl">
+  <footer class="w-screen h-12 fixed bottom-0 px-6 flex md:hidden rounded-t-xl dark:bg-slate-900">
     <div
-      class="w-12 h-12 rounded-full fixed bottom-6 inset-x-1/2 bg-white -ml-6 flex items-center justify-center shadow-xl"
+      class="w-12 h-12 rounded-full fixed bottom-6 inset-x-1/2 bg-white dark:bg-slate-700 -ml-6 flex items-center justify-center shadow-xl"
     >
       <img class="w-8 h-8" :src="logo" />
     </div>
-    <div class="w-full flex justify-between">
-      <div class="w-1/2 pr-12 flex justify-between items-center">
+    <div class="w-full flex justify-between dark:bg-slate-900">
+      <div class="w-1/2 pr-12 flex justify-between items-center dark:bg-slate-900">
         <div class="w-1/2 flex justify-center">
           <BellIcon class="h-6 w-6 stroke-blue-400" />
         </div>

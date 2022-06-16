@@ -1,17 +1,17 @@
 <template>
   <div class="w-full mb-6 flex justify-between items-center">
     <div>
-      <router-link class="text-xl font-bold" :to="{ name: 'Backstage.Project' }">
+      <router-link class="text-xl font-bold dark:text-gray-300" :to="{ name: 'Backstage.Project' }">
         Project
       </router-link>
-      <span class="mx-2">/</span>
-      <span class="">Detail</span>
+      <span class="mx-2 dark:text-gray-300">/</span>
+      <span class="dark:text-gray-200">Detail</span>
     </div>
   </div>
   <div class="flex">
     <div v-for="(column, index) in columns" :key="index" class="w-80 min-h-[2rem] mr-8">
       <div class="h-16 mb-4 flex justify-center items-center">
-        <span class="">{{ column.name }}</span>
+        <span class="dark:text-gray-300">{{ column.name }}</span>
       </div>
 
       <draggable
@@ -22,7 +22,7 @@
       >
         <template #item="{ element }">
           <div
-            class="w-full min-h-[8rem] bg-white rounded-xl border p-5 mb-4 hover:shadow-md cursor-pointer"
+            class="w-full min-h-[8rem] bg-white dark:bg-slate-900 dark:border-slate-900 dark:text-gray-300 rounded-xl border p-5 mb-4 hover:shadow-md cursor-pointer"
           >
             {{ element.name }}
           </div>
@@ -30,11 +30,11 @@
       </draggable>
       <div
         v-show="showColumnCardDom !== 0 && showColumnCardDom === column.id"
-        class="w-full min-h-[8rem] bg-white rounded-xl border p-5 mb-4 hover:shadow-md cursor-pointer"
+        class="w-full min-h-[8rem] bg-white rounded-xl border p-5 mb-4 hover:shadow-md cursor-pointer dark:bg-slate-900 dark:border-slate-800"
       >
         <textarea
           v-model="card.name"
-          class="w-full outline-none border rounded border-indigo-300 px-3 py-2"
+          class="w-full outline-none border rounded border-indigo-300 px-3 py-2 dark:bg-slate-800 dark:text-gray-200 dark:border-slate-800 dark:focus:border-indigo-400"
           rows="3"
         ></textarea>
         <div class="w-full mt-4 flex justify-end">
@@ -46,22 +46,25 @@
       </div>
       <div
         v-show="showColumnCardDom === 0 || card.project_column_id !== column.id"
-        class="w-full h-12 rounded-xl border border-dashed border-indigo-300 flex justify-center items-center cursor-pointer"
+        class="w-full h-12 rounded-xl border border-dashed border-indigo-300 flex justify-center items-center cursor-pointer dark:text-gray-400"
         @click="showCardDom(column.id)"
       >
         <span> + Add Card </span>
       </div>
     </div>
-    <div class="w-80 h-16 bg-white border rounded-xl p-4">
+    <div class="w-80 h-16 bg-white dark:bg-slate-900 dark:border-slate-900 border rounded-xl p-4">
       <div class="w-full h-full relative">
         <input
           v-model="column.name"
-          class="w-full h-full outline-none border-b-2 border-gray-300 py-1 pl-2 pr-8 focus:border-indigo-400"
+          class="w-full h-full outline-none border-b-2 border-gray-300 dark:bg-slate-900 dark:border-slate-700 dark:text-gray-300 py-1 pl-2 pr-8 focus:border-indigo-400 dark:focus:border-indigo-400"
           type="text"
           placeholder="Create Column"
           @keyup.enter="createColumn"
         />
-        <PencilIcon class="h-5 w-5 absolute top-1 right-1 cursor-pointer" @click="createColumn" />
+        <PencilIcon
+          class="h-5 w-5 absolute top-1 right-1 cursor-pointer dark:text-indigo-500"
+          @click="createColumn"
+        />
       </div>
     </div>
   </div>

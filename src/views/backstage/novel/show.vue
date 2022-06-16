@@ -1,7 +1,13 @@
 <template>
-  <div class="bg-white w-full py-4 px-6 flex rounded-xl border shadow-xl">
+  <div class="w-full mb-6 flex justify-between items-center">
+    <span class="text-2xl font-bold dark:text-gray-300">Chapter</span>
+  </div>
+
+  <div
+    class="bg-white dark:bg-slate-900 dark:border-slate-900 w-full py-4 px-6 flex rounded-xl border shadow-xl"
+  >
     <img class="h-full w-36 rounded-lg" :src="data.info.image" alt="" />
-    <div class="ml-4 flex flex-col justify-between">
+    <div class="ml-4 flex flex-col justify-between dark:text-gray-300">
       <p>
         <span class="text-xl font-semibold">{{ data.info.title }}</span>
         <br />
@@ -20,7 +26,7 @@
     <div
       v-for="(chapter, index) in data.chapters"
       :key="index"
-      class="bg-white border rounded-lg mb-2 p-2 shadow-md"
+      class="bg-white dark:bg-slate-900 dark:border-slate-800 dark:text-gray-300 border rounded-lg mb-2 p-2 shadow-md"
       @click="toChapterDetails(chapter.link)"
     >
       {{ chapter.title }}

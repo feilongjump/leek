@@ -1,7 +1,17 @@
 <template>
-  <SunIcon v-show="darkMode == 'light'" class="h-6 w-6 stroke-yellow-300" @click="change('dark')" />
+  <SunIcon
+    v-show="darkMode == 'light'"
+    class="stroke-yellow-300"
+    :class="props.class"
+    @click="change('dark')"
+  />
 
-  <MoonIcon v-show="darkMode == 'dark'" class="h-6 w-6 stroke-slate-500" @click="change('light')" />
+  <MoonIcon
+    v-show="darkMode == 'dark'"
+    class="stroke-slate-500"
+    :class="props.class"
+    @click="change('light')"
+  />
 </template>
 
 <script setup lang="ts">
@@ -28,4 +38,13 @@ const change = (mode: Mode) => {
   // Whenever the user explicitly chooses light mode
   localStorage.theme = mode
 }
+
+const props = defineProps({
+  class: {
+    type: Array,
+    default() {
+      return ['h-6', 'w-6']
+    }
+  }
+})
 </script>

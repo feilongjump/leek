@@ -1,7 +1,9 @@
 <template>
   <div class="ranking w-full overflow-x-auto pt-12">
-    <table class="w-full text-sm text-left text-gray-500">
-      <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-300">
+      <thead
+        class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400"
+      >
         <tr>
           <th scope="col" class="px-6 py-3">Product name</th>
           <th scope="col" class="px-6 py-3">Color</th>
@@ -13,8 +15,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="bg-white border-b">
-          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+        <tr class="bg-white dark:bg-slate-900 border-b dark:border-b-slate-800">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
+          >
             Apple MacBook Pro 17"
           </th>
           <td class="px-6 py-4">Sliver</td>
@@ -24,8 +29,11 @@
             <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
           </td>
         </tr>
-        <tr class="bg-white border-b">
-          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+        <tr class="bg-white dark:bg-slate-900 border-b dark:border-b-slate-800">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
+          >
             Microsoft Surface Pro
           </th>
           <td class="px-6 py-4">White</td>
@@ -35,8 +43,11 @@
             <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
           </td>
         </tr>
-        <tr class="bg-white border-b">
-          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+        <tr class="bg-white dark:bg-slate-900 border-b dark:border-b-slate-800">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
+          >
             Magic Mouse 2
           </th>
           <td class="px-6 py-4">Black</td>
@@ -46,8 +57,11 @@
             <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
           </td>
         </tr>
-        <tr class="bg-white">
-          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+        <tr class="bg-white dark:bg-slate-900">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
+          >
             Magic Mouse 2
           </th>
           <td class="px-6 py-4">Black</td>

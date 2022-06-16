@@ -19,14 +19,14 @@
     <div class="hidden md:flex items-center">
       <div class="mr-6">
         <input
-          class="pl-2 border-b-2 outline-none transition ease-in-out duration-300 focus:border-indigo-500"
+          class="pl-2 border-b-2 outline-none transition ease-in-out duration-300 focus:border-indigo-500 dark:bg-slate-900 dark:border-b-slate-800 dark:focus:border-indigo-500 dark:text-gray-300"
           placeholder="Search ..."
         />
       </div>
       <div class="flex items-center">
         <BellIcon class="h-6 w-6 stroke-blue-400 mr-6" />
         <ChatIcon class="h-6 w-6 stroke-indigo-400 mr-6" />
-        <DarkMode class="mr-6" />
+        <DarkMode :class="['w-6', 'h-6', 'mr-6']" />
         <img class="h-8 w-8 rounded-full" :src="avatar" />
       </div>
     </div>
@@ -47,7 +47,8 @@ import menus from './menu'
     absolute md:fixed md:top-4
     border bg-white rounded-b-xl md:rounded-xl shadow-xl
     transition-all duration-500 ease-in-out
-    flex justify-between items-center;
+    flex justify-between items-center
+    dark:bg-slate-900 dark:border-slate-900;
 }
 @screen md {
   #navbar-container {

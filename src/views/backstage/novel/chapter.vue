@@ -1,19 +1,19 @@
 <template>
-  <div class="w-full flex justify-center text-lg font-bold">
+  <div class="w-full flex justify-center text-2xl font-bold dark:text-gray-200">
     <h1 ref="chapterDom">{{ data.title }}</h1>
   </div>
   <div class="mt-4 w-full flex justify-center">
     <button
       v-for="(item, index) in data.links"
       :key="index"
-      class="ml-2 first:ml-0 bg-white px-2 py-1 rounded-md text-sm"
+      class="ml-2 first:ml-0 bg-white dark:bg-slate-900 dark:text-gray-300 px-2 py-1 rounded-md text-sm"
       @click="jump(item)"
     >
       {{ item.title }}
     </button>
   </div>
   <section
-    class="w-full mt-4 flex flex-col space-y-4 tracking-widest"
+    class="w-full text-xl mt-4 flex flex-col space-y-4 tracking-widest dark:text-gray-300"
     v-html="data.content"
   ></section>
 
@@ -21,7 +21,7 @@
     <button
       v-for="(item, index) in data.links"
       :key="index"
-      class="ml-2 first:ml-0 bg-white px-2 py-1 rounded-md text-sm"
+      class="ml-2 first:ml-0 bg-white dark:bg-slate-900 dark:text-gray-300 px-2 py-1 rounded-md text-sm"
       @click="jump(item)"
     >
       {{ item.title }}

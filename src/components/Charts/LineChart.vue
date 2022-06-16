@@ -32,7 +32,7 @@ const props = defineProps<Props>()
 
 onMounted(() => {
   // 创建图表
-  const chartInstance = echarts.init(lineChart.value as HTMLElement)
+  const chartInstance = echarts.init(lineChart.value as HTMLElement, 'dark')
   chartInstance.setOption(props.options)
 })
 </script>

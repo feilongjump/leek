@@ -1,9 +1,17 @@
 <template>
-  <div class="w-full flex justify-between items-center p-6 pb-4 border-b mb-6">
-    <span class="tracking-wide font-semibold">Trend</span>
-    <div class="w-44 h-10 bg-gray-50 rounded-md flex justify-center items-center">
-      <button class="h-8 bg-white text-xs px-2 py-1 rounded-md mr-2 shadow-xl">This Week</button>
-      <button class="h-8 text-xs px-2 py-1 rounded-md text-gray-500 hover:text-indigo-300">
+  <div
+    class="w-full flex justify-between items-center p-6 pb-4 border-b mb-6 dark:border-slate-700"
+  >
+    <span class="tracking-wide font-semibold dark:text-gray-300">Trend</span>
+    <div class="w-44 h-10 bg-gray-50 dark:bg-slate-900 rounded-md flex justify-center items-center">
+      <button
+        class="h-8 bg-white dark:bg-slate-800 dark:text-gray-300 text-xs px-2 py-1 rounded-md mr-2 shadow-xl"
+      >
+        This Week
+      </button>
+      <button
+        class="h-8 text-xs px-2 py-1 rounded-md text-gray-500 dark:text-gray-400 hover:text-indigo-300 dark:hover:text-indigo-300"
+      >
         This Month
       </button>
     </div>
@@ -16,6 +24,7 @@ import LineChart from '@/components/Charts/LineChart.vue'
 import type { ECLineOption } from '@/components/Charts/types'
 
 const options = <ECLineOption>{
+  backgroundColor: 'transparent',
   tooltip: {
     trigger: 'axis',
     axisPointer: {

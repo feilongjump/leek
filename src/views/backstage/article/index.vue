@@ -1,6 +1,6 @@
 <template>
   <div class="w-full mb-6 flex justify-between items-center">
-    <span class="text-2xl font-bold">Article</span>
+    <span class="text-2xl font-bold dark:text-gray-300">Article</span>
     <router-link
       :to="{ name: 'Backstage.Article.Add' }"
       class="flex justify-center items-center bg-indigo-400 text-sm text-white rounded-lg px-4 py-2 hover:bg-indigo-500"
@@ -9,12 +9,14 @@
     </router-link>
   </div>
 
-  <div class="w-full border bg-white rounded-xl shadow-xl py-2">
+  <div
+    class="w-full border bg-white dark:bg-slate-900 dark:border-slate-900 rounded-xl shadow-xl py-2"
+  >
     <div class="px-4 py-4 w-full flex justify-between flex-wrap items-center">
       <div class="w-full sm:w-72 relative">
         <SearchIcon class="w-4 h-4 text-gray-400 absolute top-[3px]" />
         <input
-          class="w-full pl-7 pb-1 border-b outline-none focus:border-indigo-500 transition ease-in-out duration-300"
+          class="w-full pl-7 pb-1 border-b outline-none focus:border-indigo-500 transition ease-in-out duration-300 dark:bg-slate-900 dark:focus:border-indigo-500 dark:text-gray-300"
           placeholder="Search ..."
         />
       </div>
@@ -39,14 +41,16 @@
           <div v-if="open">
             <PopoverPanel
               v-slot="{ close }"
-              class="w-64 absolute z-10 top-12 right-0 bg-white rounded-xl py-4 shadow-xl border border-gray-200"
+              class="w-64 absolute z-10 top-12 right-0 bg-white dark:bg-slate-900 rounded-xl py-4 shadow-xl border border-gray-200 dark:border-slate-800"
             >
-              <div class="border-b px-4 pb-4">
-                <span class="font-bold">Filter</span>
+              <div class="border-b px-4 pb-4 dark:border-b-slate-700">
+                <span class="font-bold dark:text-gray-300">Filter</span>
               </div>
               <div class="px-4 pt-4">
                 <div class="mb-4">
-                  <div class="text-sm font-semibold mb-2 text-gray-400"><span>Status</span></div>
+                  <div class="text-sm font-semibold mb-2 text-gray-400 dark:text-gray-300">
+                    <span>Status</span>
+                  </div>
                   <div class="w-full flex justify-between">
                     <div class="flex items-center relative">
                       <input
@@ -58,7 +62,7 @@
                       />
                       <label
                         for="published-status"
-                        class="text-sm cursor-pointer ml-4 text-gray-500 before:w-5 before:h-5 before:bg-white before:rounded-md before:absolute before:border before:border-gray-300 before:left-0 before:top-0 peer-checked:before:bg-indigo-400 peer-checked:before:border-indigo-400 after:block after:w-5 after:h-5 after:absolute after:left-0 after:top-0 after:bg-check after:bg-cover after:bg-no-repeat"
+                        class="text-sm cursor-pointer ml-4 text-gray-500 dark:text-gray-400 before:w-5 before:h-5 before:bg-white before:rounded-md before:absolute before:border before:border-gray-300 before:left-0 before:top-0 peer-checked:before:bg-indigo-400 peer-checked:before:border-indigo-400 after:block after:w-5 after:h-5 after:absolute after:left-0 after:top-0 after:bg-check after:bg-cover after:bg-no-repeat"
                       >
                         Published
                       </label>
@@ -73,7 +77,7 @@
                       />
                       <label
                         for="draft-status"
-                        class="text-sm cursor-pointer ml-4 text-gray-500 before:w-5 before:h-5 before:bg-white before:rounded-md before:absolute before:border before:border-gray-300 before:left-0 before:top-0 peer-checked:before:bg-indigo-400 peer-checked:before:border-indigo-400 after:block after:w-5 after:h-5 after:absolute after:left-0 after:top-0 after:bg-check after:bg-cover after:bg-no-repeat"
+                        class="text-sm cursor-pointer ml-4 text-gray-500 before:w-5 dark:text-gray-400 before:h-5 before:bg-white before:rounded-md before:absolute before:border before:border-gray-300 before:left-0 before:top-0 peer-checked:before:bg-indigo-400 peer-checked:before:border-indigo-400 after:block after:w-5 after:h-5 after:absolute after:left-0 after:top-0 after:bg-check after:bg-cover after:bg-no-repeat"
                       >
                         Draft
                       </label>
@@ -92,10 +96,12 @@
         </Popover>
       </div>
     </div>
-    <div class="border-t-2">
+    <div class="border-t-2 dark:border-slate-800">
       <div class="w-full overflow-x-auto">
-        <table class="w-full text-sm text-left text-gray-500">
-          <thead class="text-xs text-gray-700 uppercase bg-slate-50">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead
+            class="text-xs text-gray-700 uppercase bg-slate-50 dark:bg-gray-700 dark:text-gray-300"
+          >
             <tr>
               <th scope="col" class="px-4 py-4">Title</th>
               <th scope="col" class="px-4 py-4">Created Time</th>
@@ -104,8 +110,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, index) in data.data" :key="index" class="bg-white">
-              <th scope="row" class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap">
+            <tr v-for="(item, index) in data.data" :key="index" class="bg-white dark:bg-slate-900">
+              <th
+                scope="row"
+                class="px-4 py-4 font-medium text-gray-900 dark:text-gray-300 whitespace-nowrap"
+              >
                 {{ item.title }}
               </th>
               <td class="px-4 py-4">{{ item.created_at }}</td>
@@ -122,12 +131,14 @@
           </tbody>
         </table>
       </div>
-      <div class="w-full border-t px-4 py-4 flex justify-between items-center">
+      <div
+        class="w-full border-t dark:border-slate-700 px-4 py-4 flex justify-between items-center"
+      >
         <div class="text-gray-400 text-sm">
           <span>Showing:</span>
           <select
             v-model="params.per_page"
-            class="text-black mx-3 outline-none"
+            class="text-black mx-3 outline-none dark:bg-slate-900 dark:text-gray-200"
             @change="handleFilter()"
           >
             <option value="10">10</option>
@@ -139,7 +150,7 @@
         <div class="flex">
           <ul class="flex items-center">
             <li
-              class="w-12 h-9 mr-2 flex justify-center items-center"
+              class="w-12 h-9 mr-2 flex justify-center items-center dark:text-gray-300"
               :class="[
                 data.meta.current_page === 1
                   ? 'cursor-default'
@@ -152,22 +163,22 @@
             <li
               v-for="index of data.meta.last_page"
               :key="index"
-              class="w-9 h-9 flex justify-center items-center mr-2 rounded-lg"
+              class="w-9 h-9 flex justify-center items-center mr-2 rounded-lg dark:text-gray-300"
               :class="[
                 index === data.meta.current_page
                   ? ' cursor-default bg-indigo-400 text-white'
-                  : 'hover:bg-indigo-100 hover:text-indigo-400 cursor-pointer'
+                  : 'hover:bg-indigo-100 hover:text-indigo-400 cursor-pointer dark:hover:bg-slate-800'
               ]"
               @click="handleFilter(index)"
             >
               {{ index }}
             </li>
             <li
-              class="w-12 h-9 flex justify-center items-center p-2 rounded-lg"
+              class="w-12 h-9 flex justify-center items-center p-2 rounded-lg dark:text-gray-300"
               :class="[
                 data.meta.current_page === data.meta.last_page
                   ? 'cursor-default'
-                  : 'cursor-pointer hover:bg-indigo-100 hover:text-indigo-400'
+                  : 'cursor-pointer hover:bg-indigo-100 hover:text-indigo-400 dark:hover:bg-slate-800'
               ]"
               @click="handleFilter(data.meta.current_page + 1)"
             >

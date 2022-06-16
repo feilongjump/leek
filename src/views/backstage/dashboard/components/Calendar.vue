@@ -34,14 +34,17 @@ const selectDate = (val: string) => {
 </script>
 
 <style>
+#calendar-container {
+  @apply dark:bg-slate-900;
+}
 #calendar-container .el-calendar__header {
-  @apply px-2 mb-6;
+  @apply px-2 mb-6 dark:bg-slate-900  dark:text-gray-300 dark:border-slate-700;
 }
 #calendar-container .el-calendar-table thead th {
-  @apply p-0 pb-3;
+  @apply p-0 pb-3 dark:text-gray-400;
 }
 #calendar-container .el-calendar__body {
-  @apply p-0;
+  @apply p-0  dark:bg-slate-900;
 }
 #calendar-container .el-calendar-table tr td:first-child {
   @apply border-t-0 border-l-0;
@@ -61,5 +64,12 @@ const selectDate = (val: string) => {
 }
 #calendar-container .el-calendar-table .el-calendar-day {
   @apply hover:bg-indigo-500 hover:rounded-full hover:text-white;
+}
+#calendar-container .el-calendar-table .el-calendar-table__row .prev .el-calendar-day,
+#calendar-container .el-calendar-table .el-calendar-table__row .next .el-calendar-day {
+  @apply dark:text-gray-600;
+}
+#calendar-container .el-calendar-table .el-calendar-table__row .current .el-calendar-day {
+  @apply dark:text-gray-300;
 }
 </style>

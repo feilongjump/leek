@@ -56,7 +56,8 @@ import menus from './menu'
       fixed top-4 -left-24 md:left-4
       border bg-white rounded-xl shadow-xl
       transition-all duration-500 ease-in-out
-      flex flex-col justify-between;
+      flex flex-col justify-between
+      dark:bg-slate-900 dark:border-slate-900;
 }
 .sidebar-menu-height {
   height: calc(theme('height.full') - theme('height.20') - theme('height.8'));
