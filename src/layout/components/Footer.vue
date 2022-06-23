@@ -1,5 +1,8 @@
 <template>
-  <footer class="w-screen h-12 fixed bottom-0 px-6 flex md:hidden rounded-t-xl dark:bg-slate-900">
+  <footer
+    class="w-screen h-12 fixed bottom-0 px-6 flex md:hidden rounded-t-xl dark:bg-slate-900"
+    :class="footerClass"
+  >
     <div
       class="w-12 h-12 rounded-full fixed bottom-6 inset-x-1/2 bg-white dark:bg-slate-700 -ml-6 flex items-center justify-center shadow-xl"
     >
@@ -30,7 +33,17 @@
 import logo from '@/assets/logo.png'
 import avatar from '@/assets/avatar.jpg'
 import { BellIcon, ChatIcon } from '@heroicons/vue/outline'
+import router from '@/router'
+import { ref, watch } from 'vue'
 import DarkMode from './DarkMode.vue'
+
+const footerClass = ref()
+watch(
+  () => router.currentRoute.value.meta,
+  (meta) => {
+    footerClass.value = meta?.footerClass
+  }
+)
 </script>
 
 <style scoped>
