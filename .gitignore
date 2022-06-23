@@ -21,3 +21,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# 暂时不提交，后续有必要再说
+auto-imports.d.ts
+components.d.ts
