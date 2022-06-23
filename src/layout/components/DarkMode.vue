@@ -24,11 +24,14 @@ const darkMode = ref<Mode>('light')
 
 const change = (mode: Mode) => {
   darkMode.value = mode
+  const themeColorDom = document.getElementsByTagName('meta').namedItem('theme-color')
 
   // On page load or when changing themes, best to add inline in `head` to avoid FOUC
   if (mode === 'dark') {
+    themeColorDom?.setAttribute('content', '#1e293b')
     document.documentElement.classList.remove('light')
   } else {
+    themeColorDom?.setAttribute('content', '#ffffff')
     document.documentElement.classList.remove('dark')
   }
 
