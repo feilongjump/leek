@@ -13,10 +13,10 @@
           <li
             v-for="(item, index) in menus"
             :key="index"
-            class="w-full py-4 text-gray-400 cursor-pointer hover:activate-menu"
+            class="w-full text-gray-400 cursor-pointer hover:activate-menu"
           >
             <router-link
-              class="w-full h-full flex justify-center xl:justify-start"
+              class="w-full h-full py-4 flex justify-center xl:justify-start"
               :to="{ name: item.pathName }"
             >
               <component :is="item.icon" class="h-6 w-6 mr-0 xl:mr-4"></component>
