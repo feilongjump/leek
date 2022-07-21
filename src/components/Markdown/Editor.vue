@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineEmits, ref, onMounted, defineProps, watch } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { Editor } from 'bytemd'
 import highlight from '@bytemd/plugin-highlight'
 import zhHans from 'bytemd/locales/zh_Hans.json'
@@ -62,6 +62,7 @@ onMounted(() => {
 })
 
 watch(props, (newValue) => {
+  // 预览区显示内容
   editor.value.$set(newValue)
 })
 </script>
