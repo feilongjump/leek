@@ -11,6 +11,16 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Login',
     component: () => import('@/views/auth/login.vue')
   },
+  {
+    path: '/forget-password',
+    name: 'ForgetPassword',
+    component: () => import('@/views/auth/forgetPassword.vue')
+  },
+  {
+    path: '/reset-password',
+    name: 'ResetPassword',
+    component: () => import('@/views/auth/resetPassword.vue')
+  },
   ...backstageRouter
 ]
 

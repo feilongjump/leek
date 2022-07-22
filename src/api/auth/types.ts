@@ -8,3 +8,14 @@ export interface LoginResponse {
   access_token: string
   expires_in: number
 }
+
+export interface ForgetPasswordParams {
+  email: string
+}
+
+export interface ResetPasswordParams {
+  email: string
+  token: string
+  password: string
+  password_confirmation: string
+}

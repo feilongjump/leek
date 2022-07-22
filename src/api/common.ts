@@ -49,3 +49,8 @@ export class ListResponseDefault implements ListResponse<any> {
     total: 0
   }
 }
+
+export interface CommonResponse {
+  message?: string
+  data?: string
+}

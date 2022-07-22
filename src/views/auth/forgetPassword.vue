@@ -15,43 +15,29 @@
           <!-- form -->
           <div class="w-full lg:w-72 mt-12 lg:mt-16 flex justify-center">
             <div class="w-full flex flex-col items-start">
-              <span class="text-slate-300 text-sm">Username</span>
+              <span class="text-slate-300 text-sm">Email</span>
               <input
-                v-model="params.username"
+                v-model="params.email"
                 class="w-full border-b-2 outline-none transition ease-in-out duration-300 focus:border-indigo-500"
                 type="text"
+                @keyup.enter="forgetPassword"
               />
-            </div>
-          </div>
-          <div class="w-full lg:w-72 mt-6 flex justify-center">
-            <div class="w-full flex flex-col items-start">
-              <span class="text-slate-300 text-sm">Password</span>
-              <input
-                v-model="params.password"
-                class="w-full border-b-2 outline-none transition ease-in-out duration-300 focus:border-indigo-500"
-                type="password"
-                @keyup.enter="login"
-              />
-              <router-link
-                class="w-full flex justify-end mt-2 text-sm font-semibold text-indigo-400 hover:text-indigo-500"
-                :to="{ name: 'ForgetPassword' }"
-              >
-                Forget Password ?
-              </router-link>
             </div>
           </div>
           <!-- actions -->
           <button
             class="mt-12 bg-indigo-500 px-12 py-2 rounded-full shadow-lg shadow-indigo-300 text-white tracking-wider"
-            @click="login"
+            @click="forgetPassword"
           >
-            LOGIN
+            Send
           </button>
         </div>
         <span class="mt-12 text-sm text-gray-400">
-          Doesn't have account ?
-          <router-link class="text-indigo-300 hover:text-indigo-400 font-semibold" to="#">
-            Register
+          <router-link
+            class="text-indigo-300 hover:text-indigo-400 font-semibold"
+            :to="{ name: 'Login' }"
+          >
+            I Remember My Account!
           </router-link>
         </span>
       </div>
@@ -65,25 +51,20 @@ import logo from '@/assets/logo.png'
 import authImage from '@/assets/auth.png'
 import Auth from '@/api/auth/index'
 import { reactive } from 'vue'
-import { LoginParams } from '@/api/auth/types'
+import { ForgetPasswordParams } from '@/api/auth/types'
 import { ElMessage } from 'element-plus'
+import { CommonResponse } from '@/api/common'
 
-const params = reactive<LoginParams>({
-  username: '',
-  password: ''
+const params = reactive<ForgetPasswordParams>({
+  email: ''
 })
 
-const login = () => {
+const forgetPassword = () => {
   const AuthRequest = new Auth()
-  AuthRequest.login(params)
-    .then((response) => {
-      localStorage.setItem('token_type', response.token_type)
-      localStorage.setItem('access_token', response.access_token)
-    })
-    .then(() => {
-      ElMessage.success('登录成功！')
+  AuthRequest.forgetPassword(params).then((response: CommonResponse) => {
+    ElMessage.success(response?.message ?? '发送成功，请登录您的邮箱查收！')
 
-      router.push({ name: 'Backstage' })
-    })
+    router.push({ name: 'Login' })
+  })
 }
 </script>
