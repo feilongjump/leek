@@ -20,7 +20,7 @@
     </div>
     <Editor v-model:value="article.content.markdown" @update:value="receive" />
 
-    <DraftBox ref="draftDom" />
+    <DraftBox ref="draftDom" @update:replace="replace" />
   </div>
 </template>
 
@@ -125,6 +125,10 @@ const receive = (markdown: string) => {
 
   article.value.drafted_at = dayjs().format('YYYY-MM-DD HH:mm:ss')
   localStorage.setItem(articleKey, JSON.stringify(article.value))
+}
+
+const replace = (value: ArticleResponse) => {
+  article.value.content.markdown = value.content.markdown
 }
 </script>
 
